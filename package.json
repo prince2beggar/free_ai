@@ -1,0 +1,69 @@
+{
+  "name": "free-ai-local-prototype",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/web"
+  ],
+  "engines": {
+    "node": ">=24.21.0 <25"
+  },
+  "scripts": {
+    "build": "tsc -p apps/web/tsconfig.json && node tools/prototype/build.mjs",
+    "typecheck": "tsc -p apps/web/tsconfig.json --noEmit",
+    "lint": "eslint tools/prototype tools/phase1 tools/phase2 tools/phase3 packages/db packages/api packages/gateway packages/registry packages/ledger packages/governor packages/router packages/abuse packages/admin packages/productivity packages/files packages/backup tests/unit/*.mjs tests/integration/*.mjs tests/security/*.mjs eslint.config.mjs",
+    "format": "prettier --write package.json apps/web/package.json apps/web/tsconfig.json apps/web/src apps/web/public tools/prototype tests/unit/prototype*.mjs tests/integration/prototype*.mjs eslint.config.mjs .prettierrc.json",
+    "format:check": "prettier --check package.json apps/web/package.json apps/web/tsconfig.json apps/web/src apps/web/public tools/prototype tests/unit/prototype*.mjs tests/integration/prototype*.mjs eslint.config.mjs .prettierrc.json",
+    "test": "npm run build && node --test tests/unit/prototype*.mjs",
+    "test:browser": "npm run build && node --test tests/integration/prototype-browser.mjs",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
+    "phase3:test": "npm run build && node --test --test-concurrency=1 tests/unit/phase3*.mjs",
+    "phase3:format:check": "prettier --check packages/files packages/backup packages/productivity packages/registry packages/ledger packages/governor packages/router packages/abuse packages/admin tools/phase3 tests/unit/phase3*.mjs apps/web/src packages/api/server.mjs packages/api/repository.mjs packages/db package.json eslint.config.mjs",
+    "phase3:check": "npm run typecheck && npm run lint && npm run phase3:format:check && npm run phase3:test",
+    "phase3:serve": "npm run build && node tools/phase3/server.mjs",
+    "dev": "npm run build && node tools/prototype/server.mjs",
+    "phase1": "npm run build && node tools/phase1/server.mjs",
+    "phase1:test": "npm run build && node --test --test-concurrency=1 tests/unit/phase1*.mjs",
+    "phase1:browser": "npm run build && node --test tests/integration/phase1-browser.mjs",
+    "phase1:security": "node --test tests/security/phase1*.mjs",
+    "phase1:readiness": "node tools/phase1/evaluate.mjs",
+    "phase1:coverage": "node --test --test-concurrency=1 --experimental-test-coverage --test-coverage-lines=70 --test-coverage-include=packages/api/auth.mjs --test-coverage-include=packages/gateway/groq-evaluation.mjs tests/unit/phase1-auth.mjs tests/unit/phase1-google-routes.mjs tests/unit/phase1-provider-evaluation.mjs",
+    "phase1:evaluate": "node tools/phase1/evaluate.mjs",
+    "phase2:registry": "node tools/phase2/registry.mjs",
+    "phase2:ledger": "node tools/phase2/ledger.mjs",
+    "phase2:governor": "node tools/phase2/governor.mjs",
+    "phase2:router": "node tools/phase2/router.mjs",
+    "phase2:router-preview": "npm run build && node tools/phase2/router.mjs --serve",
+    "phase2:router-browser": "npm run build && node --test tests/integration/phase2-router-browser.mjs",
+    "phase2:router-coverage": "node --test --test-concurrency=1 --experimental-test-coverage --test-coverage-lines=70 --test-coverage-include=packages/router/*.mjs tests/unit/phase2-router*.mjs",
+    "phase2:abuse": "node tools/phase2/abuse.mjs",
+    "phase2:abuse-preview": "npm run build && node tools/phase2/abuse.mjs --serve",
+    "phase2:abuse-browser": "npm run build && node --test tests/integration/phase2-abuse-browser.mjs",
+    "phase2:abuse-coverage": "node --test --test-concurrency=1 --experimental-test-coverage --test-coverage-lines=70 --test-coverage-include=packages/abuse/*.mjs tests/unit/phase2-abuse*.mjs",
+    "phase2:admin": "node tools/phase2/admin.mjs",
+    "phase2:admin-preview": "npm run build && node tools/phase2/admin.mjs --serve",
+    "phase2:admin-browser": "npm run build && node --test tests/integration/phase2-admin-browser.mjs",
+    "phase2:admin-coverage": "node --test --test-concurrency=1 --experimental-test-coverage --test-coverage-lines=70 --test-coverage-include=packages/admin/*.mjs tests/unit/phase2-admin*.mjs",
+    "phase2": "npm run build && node tools/phase2/ledger.mjs --serve",
+    "phase2:test": "npm run build && node --test --test-concurrency=1 tests/unit/phase2*.mjs",
+    "phase2:browser": "npm run build && node --test tests/integration/phase2-ledger-browser.mjs",
+    "phase2:coverage": "node --test --test-concurrency=1 --experimental-test-coverage --test-coverage-lines=70 --test-coverage-include=packages/ledger/*.mjs tests/unit/phase2-ledger*.mjs",
+    "phase2:governor-coverage": "node --test --test-concurrency=1 --experimental-test-coverage --test-coverage-lines=70 --test-coverage-include=packages/governor/*.mjs tests/unit/phase2-governor*.mjs",
+    "phase2:format:check": "prettier --check packages/registry packages/ledger packages/governor packages/router packages/abuse packages/admin tools/phase2 tests/unit/phase2*.mjs tests/integration/phase2*.mjs apps/web/src packages/api/server.mjs packages/api/repository.mjs packages/db/index.mjs packages/db/index.d.ts package.json eslint.config.mjs .github/workflows/phase1-local.yml",
+    "phase2:check": "npm run typecheck && npm run lint && npm run phase2:format:check && npm run phase2:test",
+    "phase1:check": "npm run typecheck && npm run lint && npm run phase1:format:check && npm test && npm run phase1:test && npm run phase1:security",
+    "phase1:format": "prettier --write package.json apps/web/package.json apps/web/tsconfig.json apps/web/src apps/web/public tools/prototype tools/phase1 packages/db/*.mjs packages/db/*.d.ts packages/api packages/gateway tests/unit/*.mjs tests/integration/*.mjs tests/security/*.mjs eslint.config.mjs .prettierrc.json .github/workflows/phase1-local.yml",
+    "phase1:format:check": "prettier --check package.json apps/web/package.json apps/web/tsconfig.json apps/web/src apps/web/public tools/prototype tools/phase1 packages/db/*.mjs packages/db/*.d.ts packages/api packages/gateway tests/unit/*.mjs tests/integration/*.mjs tests/security/*.mjs eslint.config.mjs .prettierrc.json .github/workflows/phase1-local.yml"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "prettier": "3.9.10",
+    "eslint": "10.12.0",
+    "playwright-core": "1.64.0"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "0.5.9",
+    "jose": "6.2.12"
+  }
+}

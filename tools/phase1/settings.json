@@ -1,0 +1,4 @@
+{
+  "localDataDirectory": ".phase1-local/database",
+  "maintenanceIntervalMs": 60000
+}

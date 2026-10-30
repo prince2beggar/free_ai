@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "policy_id": "phase0-quality-v1",
+  "status": "PROPOSED_NOT_APPROVED",
+  "chat_min_percent": 85,
+  "bangla_min_percent": 85,
+  "english_min_percent": 85,
+  "coding_min_percent": 80,
+  "critical_cases_must_all_pass": true,
+  "real_coding_requires_isolated_functional_evidence": true,
+  "proposed_call_scope": {
+    "models_per_authorization": 1,
+    "max_calls": 45,
+    "retries": 0,
+    "fallbacks": 0,
+    "max_input_tokens_per_call": 4000,
+    "max_output_tokens_per_call": 1024,
+    "max_total_input_tokens": 180000,
+    "max_total_output_tokens": 46080,
+    "max_provider_spend_minor": 0,
+    "spend_currency": "BDT",
+    "permitted_data": "PROJECT_AUTHORED_SYNTHETIC_ONLY",
+    "provider_model_key_environment_expiry": null,
+    "authorization_record": null
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "scopeId": "groq-local-eval",
+  "ownerApproved": false,
+  "providerId": "groq",
+  "modelId": null,
+  "environment": "local",
+  "keyEnvName": "GROQ_API_KEY",
+  "expiresAt": null,
+  "caps": {
+    "maxCalls": 45,
+    "maxInputTokens": 4000,
+    "maxOutputTokens": 1024,
+    "maxSpendBdt": 0,
+    "noRetries": true,
+    "noFallbacks": true
+  },
+  "evidence": {
+    "termsUrl": null,
+    "checkedDate": null,
+    "eligibilityVerified": false,
+    "freeOnlyVerified": false,
+    "noOverageVerified": false,
+    "freeOnlyDetails": null
+  },
+  "accountLimits": {
+    "rpm": null,
+    "tpm": null,
+    "dailyRemaining": null,
+    "dedicatedTestAccount": false
+  },
+  "tokenization": {
+    "suiteSha256": "eb4aa10acda78daeb987906c324494f56b94295253e157929d3c03ef45cbe528",
+    "modelId": null,
+    "verified": false,
+    "evidence": null,
+    "inputTokensByCase": {}
+  }
+}

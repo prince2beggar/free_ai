@@ -1,0 +1,64 @@
+{
+  "localOnly": true,
+  "dayOffsetMinutes": 360,
+  "ipv4PrefixBits": 24,
+  "ipv6PrefixBits": 64,
+  "newAccountMs": 604800000,
+  "trustLevels": [
+    {
+      "minAgeMs": 0,
+      "verifiedContact": false,
+      "minGoodBehavior": 0,
+      "dailyRequests": 4,
+      "dailyTokens": 1000,
+      "burstRequests": 2,
+      "concurrency": 1
+    },
+    {
+      "minAgeMs": 86400000,
+      "verifiedContact": false,
+      "minGoodBehavior": 2,
+      "dailyRequests": 8,
+      "dailyTokens": 2000,
+      "burstRequests": 4,
+      "concurrency": 1
+    },
+    {
+      "minAgeMs": 604800000,
+      "verifiedContact": true,
+      "minGoodBehavior": 10,
+      "dailyRequests": 16,
+      "dailyTokens": 4000,
+      "burstRequests": 6,
+      "concurrency": 1
+    },
+    {
+      "minAgeMs": 2592000000,
+      "verifiedContact": true,
+      "minGoodBehavior": 50,
+      "dailyRequests": 32,
+      "dailyTokens": 8000,
+      "burstRequests": 8,
+      "concurrency": 1
+    }
+  ],
+  "burstWindowMs": 60000,
+  "burstChallengeAfter": 1,
+  "newAccountDeviceRequests": 6,
+  "newAccountIpRequests": 12,
+  "clusterAccounts": 2,
+  "challengeDifficulty": 12,
+  "challengeTtlMs": 120000,
+  "maxModerationMs": 2592000000,
+  "throttleDailyRequests": 1,
+  "throttleDailyTokens": 500,
+  "throttleBurstRequests": 1,
+  "maxProfiles": 10000,
+  "maxSources": 20000,
+  "maxCounters": 20000,
+  "maxAdmissions": 10000,
+  "maxChallenges": 10000,
+  "maxAlerts": 1000,
+  "maxEvents": 50000,
+  "moderationEventReserve": 100
+}

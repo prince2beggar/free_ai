@@ -1,0 +1,449 @@
+{
+  "schema_version": 1,
+  "report_kind": "OFFLINE_HARNESS_DIAGNOSTICS",
+  "input_kind": "STUB",
+  "generated_at_utc": "2026-10-12T20:13:28.457354+00:00",
+  "suite_sha256": "adb7cad85a871c2e8119637b30006dbe02adf48e249155402464f74c79b88695",
+  "policy_sha256": "25d95a14a45802bb76a3223dedfd16b950cf069fab1872a56a808bc71ec904be",
+  "grader_sha256": "4b325d7b6f56959a84c4cbb44a82131ebe8e3c79aeb61cb8ecdbfb5e81703810",
+  "threshold_status": "PROPOSED_NOT_APPROVED",
+  "review_basis": "CANNED_FIXTURE_SIMULATION",
+  "model_provenance": {
+    "provider_id": "offline-fixture",
+    "model_id": "CANNED_STUB",
+    "model_version": "1",
+    "source_urls": []
+  },
+  "observed_provider_cost_minor": 0,
+  "cost_currency": "BDT",
+  "provider_calls_made_by_harness": 0,
+  "model_code_executed_by_harness": false,
+  "diagnostics": {
+    "chat": {
+      "total": 30,
+      "passed": 30,
+      "failed": 0,
+      "missing": 0,
+      "unreviewed": 0,
+      "pass_fraction": "30/30"
+    },
+    "coding": {
+      "total": 15,
+      "passed": 15,
+      "failed": 0,
+      "missing": 0,
+      "unreviewed": 0,
+      "pass_fraction": "15/15"
+    },
+    "bn": {
+      "total": 15,
+      "passed": 15,
+      "failed": 0,
+      "missing": 0,
+      "unreviewed": 0,
+      "pass_fraction": "15/15"
+    },
+    "en": {
+      "total": 15,
+      "passed": 15,
+      "failed": 0,
+      "missing": 0,
+      "unreviewed": 0,
+      "pass_fraction": "15/15"
+    }
+  },
+  "diagnostic_thresholds": {
+    "basis": "DIAGNOSTIC_ONLY_NOT_MODEL_QUALITY",
+    "chat_pass": true,
+    "coding_pass": true
+  },
+  "cases": [
+    {
+      "id": "BN01",
+      "group": "chat",
+      "language": "bn",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN02",
+      "group": "chat",
+      "language": "bn",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN03",
+      "group": "chat",
+      "language": "bn",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN04",
+      "group": "chat",
+      "language": "bn",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN05",
+      "group": "chat",
+      "language": "bn",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN06",
+      "group": "chat",
+      "language": "bn",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN07",
+      "group": "chat",
+      "language": "bn",
+      "critical": true,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN08",
+      "group": "chat",
+      "language": "bn",
+      "critical": true,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN09",
+      "group": "chat",
+      "language": "bn",
+      "critical": true,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN10",
+      "group": "chat",
+      "language": "bn",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN11",
+      "group": "chat",
+      "language": "bn",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN12",
+      "group": "chat",
+      "language": "bn",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN13",
+      "group": "chat",
+      "language": "bn",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN14",
+      "group": "chat",
+      "language": "bn",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "BN15",
+      "group": "chat",
+      "language": "bn",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN01",
+      "group": "chat",
+      "language": "en",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN02",
+      "group": "chat",
+      "language": "en",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN03",
+      "group": "chat",
+      "language": "en",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN04",
+      "group": "chat",
+      "language": "en",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN05",
+      "group": "chat",
+      "language": "en",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN06",
+      "group": "chat",
+      "language": "en",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN07",
+      "group": "chat",
+      "language": "en",
+      "critical": true,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN08",
+      "group": "chat",
+      "language": "en",
+      "critical": true,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN09",
+      "group": "chat",
+      "language": "en",
+      "critical": true,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN10",
+      "group": "chat",
+      "language": "en",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN11",
+      "group": "chat",
+      "language": "en",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN12",
+      "group": "chat",
+      "language": "en",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN13",
+      "group": "chat",
+      "language": "en",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN14",
+      "group": "chat",
+      "language": "en",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "EN15",
+      "group": "chat",
+      "language": "en",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true
+    },
+    {
+      "id": "CODE01",
+      "group": "coding",
+      "language": "python",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE02",
+      "group": "coding",
+      "language": "javascript",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE03",
+      "group": "coding",
+      "language": "sql",
+      "critical": true,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE04",
+      "group": "coding",
+      "language": "python",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE05",
+      "group": "coding",
+      "language": "javascript",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE06",
+      "group": "coding",
+      "language": "python",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE07",
+      "group": "coding",
+      "language": "python",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE08",
+      "group": "coding",
+      "language": "javascript",
+      "critical": true,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE09",
+      "group": "coding",
+      "language": "python",
+      "critical": true,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE10",
+      "group": "coding",
+      "language": "typescript",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE11",
+      "group": "coding",
+      "language": "python",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE12",
+      "group": "coding",
+      "language": "python",
+      "critical": true,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE13",
+      "group": "coding",
+      "language": "sql",
+      "critical": false,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE14",
+      "group": "coding",
+      "language": "python",
+      "critical": true,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    },
+    {
+      "id": "CODE15",
+      "group": "coding",
+      "language": "python",
+      "critical": true,
+      "status": "PASS",
+      "automatic_check_pass": true,
+      "functional_test_status": "NOT_EXECUTED"
+    }
+  ],
+  "real_quality_proven": false,
+  "chat_quality_pass": null,
+  "coding_quality_pass": null,
+  "agent_ready": false,
+  "phase0_go": false,
+  "full_step_complete": false,
+  "blocking_conditions": [
+    "THRESHOLDS_AND_LIVE_SCOPE_REQUIRE_RECORDED_OWNER_APPROVAL",
+    "NO_VERIFIED_ELIGIBLE_REAL_MODEL_RUN",
+    "NO_ISOLATED_FUNCTIONAL_CODING_EVIDENCE",
+    "OTHER_PHASE0_PROVIDER_CAPACITY_HOSTING_LEGAL_GATES_REMAIN_OPEN"
+  ]
+}

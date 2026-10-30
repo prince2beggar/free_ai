@@ -1,0 +1,48 @@
+# Local credentials and personal tool state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.aws/
+.codex/
+.agents/
+
+# Repository-local development tools and temporary verification data
+/.tools/
+/.bootstrap-verification/
+/.eval-local/
+/.phase1-local/
+/.phase1-test/
+/.phase1-integration/
+/.phase2-local/
+/.phase2-test/
+/.phase2-test-db-*/
+/.phase3-local/
+/.phase3-test/
+
+# Dependencies and generated build/test output
+node_modules/
+__pycache__/
+*.pyc
+.next/
+.turbo/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+*.log
+
+# Runtime customer data must never enter version control
+/uploads/
+/workspaces/
+/artifacts/
+/backups/
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,1066 @@
+{
+  "schema_version": 1,
+  "researched_at": "2026-10-12",
+  "status": "research_complete_pending_eligibility_and_fee_verification",
+  "research_only": true,
+  "scope": "Representative current text-inference models from the four Step 0.2 candidates, USD/BDT references and three SRS payment-gateway candidates. Not a recommended or approved production model list.",
+  "decision_record": "PRICING-001",
+  "model_calls_made": 0,
+  "credentials_used": false,
+  "paid_calls_made": 0,
+  "provider_conditions_source": "docs/provider_research.json",
+  "provider_terms_matrix": "docs/PROVIDER_TERMS_MATRIX.md",
+  "units": {
+    "model_rates": "Decimal strings in USD per 1,000,000 billable tokens",
+    "fx_rates": "Decimal strings in BDT per 1 USD",
+    "percentage_rates": "Decimal fractions: 0.025 means 2.5%",
+    "payment_amounts": "Integer BDT minor units; 100 minor units per BDT",
+    "cost_accounting": "Exact decimal/rational math; 1 CU = 1 BDT; 10,000 micro-CU per CU. Round positive total costs up once; token grants down."
+  },
+  "use_rules": [
+    "Public price verification does not establish intended-use permission, selected account/model entitlement, capacity, quality, or owner approval.",
+    "All eligible_for_feasibility flags are false while the linked conditions are unresolved; no GO or pack-sale claim follows from this file.",
+    "Unknown required costs are null with TODO-VERIFY. Never coerce null to zero, drop an unknown component, or silently use a source observation as an approved operational rate.",
+    "Select a model ID, provider, tier, endpoint, billing mode and valid price period together. effective_from/effective_until are inclusive dates; null means the source did not publish that boundary.",
+    "Refresh public rates and reconcile contracted prices before financial decisions, registry enablement and Phase 6; fail closed on stale or changed evidence.",
+    "Prices cover uncached online text inference only. Treat optional tools, cache storage, batch/flex, non-text modalities, taxes, FX and platform charges separately; no optional-cost route may run with unknown rates.",
+    "Use authoritative billable usage, including billed reasoning and retry/fallback attempts, rather than visible output length. Confirm model-specific token/neuron billing and rounding before caps.",
+    "Cloudflare displayed token equivalents are rounded. For a conservative scenario use the greater of displayed token cost or neuron-meter cost, then verify invoice rounding and other charges. Do not add both representations. The daily included allocation is shared across models.",
+    "OpenRouter credit-purchase fees are acquisition costs, not a surcharge per inference request. Allocate once from actual credit purchases and verify gross/net basis and minimum fee.",
+    "Choose a customer collection route: SSLCommerz aggregation or a direct MFS contract. Do not add direct bKash/Nagad fees on top of aggregator channel fees without evidence of a separate contracted charge.",
+    "The hypothetical SRS 9.4 rates remain demonstration fixtures and are not imported here as current market prices."
+  ],
+  "provider_conditions": [
+    {
+      "provider_id": "gemini-developer-api",
+      "open_question_ids": [
+        "PROV-GEMINI-FIT",
+        "PROV-GEMINI-LIMITS",
+        "D-AGE",
+        "D10",
+        "EVAL"
+      ],
+      "condition_summary": "Business/consumer and audience-age fit, region rules, API-sublicensing restrictions, free-data use and exact project quotas remain unresolved.",
+      "enabled": false,
+      "owner_approved": false,
+      "allows_multiuser": false,
+      "actual_quotas_confirmed": false,
+      "agent_ready": false,
+      "disposition": "hold"
+    },
+    {
+      "provider_id": "groqcloud",
+      "open_question_ids": [
+        "PROV-GROQ-FIT",
+        "PROV-GROQ-LIMITS",
+        "PROV-GROQ-PRIVACY",
+        "D10",
+        "EVAL"
+      ],
+      "condition_summary": "Application grant versus resale/competition restrictions, model licenses, selected organization quotas and privacy settings remain unresolved.",
+      "enabled": false,
+      "owner_approved": false,
+      "allows_multiuser": false,
+      "actual_quotas_confirmed": false,
+      "agent_ready": false,
+      "disposition": "hold"
+    },
+    {
+      "provider_id": "openrouter",
+      "open_question_ids": [
+        "PROV-OR-FIT",
+        "PROV-OR-TIER",
+        "PROV-OR-PRIVACY",
+        "D10",
+        "EVAL"
+      ],
+      "condition_summary": "Competing-service/resale fit, Free API versus prepaid terms, credit expiry, endpoint privacy and exact quotas remain unresolved.",
+      "enabled": false,
+      "owner_approved": false,
+      "allows_multiuser": false,
+      "actual_quotas_confirmed": false,
+      "agent_ready": false,
+      "disposition": "hold"
+    },
+    {
+      "provider_id": "cloudflare-workers-ai",
+      "open_question_ids": [
+        "PROV-CF-FIT",
+        "PROV-CF-MODEL",
+        "D10",
+        "EVAL"
+      ],
+      "condition_summary": "Applicable service agreement, model licenses, free eligibility/tool support and actual shared-account counter remain unresolved.",
+      "enabled": false,
+      "owner_approved": false,
+      "allows_multiuser": false,
+      "actual_quotas_confirmed": false,
+      "agent_ready": false,
+      "disposition": "hold"
+    }
+  ],
+  "model_prices": [
+    {
+      "id": "gemini-flash-free",
+      "provider_id": "gemini-developer-api",
+      "model_id": "gemini-3.8-flash",
+      "tier": "unpaid_free",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0",
+      "output_per_1m": "0",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-GEMINI"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Only within available free-tier limits; no funded paid fallback is implied.",
+      "output_includes_thinking": true
+    },
+    {
+      "id": "gemini-flash-paid-2026",
+      "provider_id": "gemini-developer-api",
+      "model_id": "gemini-3.8-flash",
+      "tier": "paid",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0.75",
+      "output_per_1m": "3.75",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-GEMINI"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": "2026-12-31",
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Published temporary Standard rates through 2026-12-31.",
+      "output_includes_thinking": true
+    },
+    {
+      "id": "gemini-flash-paid-2027",
+      "provider_id": "gemini-developer-api",
+      "model_id": "gemini-3.8-flash",
+      "tier": "paid",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "1.50",
+      "output_per_1m": "7.50",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-GEMINI"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": "2027-01-01",
+      "effective_until": null,
+      "period_status_on_review": "future_announced",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Published future Standard rates; cannot select before 2027-01-01.",
+      "output_includes_thinking": true
+    },
+    {
+      "id": "gemini-lite-free",
+      "provider_id": "gemini-developer-api",
+      "model_id": "gemini-3.5-flash-lite",
+      "tier": "unpaid_free",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0",
+      "output_per_1m": "0",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-GEMINI"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Free Standard text inference within applicable quota.",
+      "output_includes_thinking": true
+    },
+    {
+      "id": "gemini-lite-paid",
+      "provider_id": "gemini-developer-api",
+      "model_id": "gemini-3.5-flash-lite",
+      "tier": "paid",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0.30",
+      "output_per_1m": "2.50",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-GEMINI"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Standard text input/output only; listed non-text rates are outside this snapshot.",
+      "output_includes_thinking": true
+    },
+    {
+      "id": "groq-oss-20b-free",
+      "provider_id": "groqcloud",
+      "model_id": "openai/gpt-oss-20b",
+      "tier": "free",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0",
+      "output_per_1m": "0",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "BILL-GROQ",
+        "PRICE-GROQ"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Free-tier usage charges stop per billing FAQ; selected model access and exact free quotas must be confirmed. Not Developer pricing."
+    },
+    {
+      "id": "groq-oss-20b-paid",
+      "provider_id": "groqcloud",
+      "model_id": "openai/gpt-oss-20b",
+      "tier": "developer",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0.075",
+      "output_per_1m": "0.30",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-GROQ",
+        "BILL-GROQ"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Production-model list price; excludes Flex, Batch, caching, built-in search/code tools and contract discounts."
+    },
+    {
+      "id": "groq-oss-120b-free",
+      "provider_id": "groqcloud",
+      "model_id": "openai/gpt-oss-120b",
+      "tier": "free",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0",
+      "output_per_1m": "0",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "BILL-GROQ",
+        "PRICE-GROQ"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Free-tier usage charges stop per billing FAQ; selected model access and exact free quotas must be confirmed. Not Developer pricing."
+    },
+    {
+      "id": "groq-oss-120b-paid",
+      "provider_id": "groqcloud",
+      "model_id": "openai/gpt-oss-120b",
+      "tier": "developer",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0.15",
+      "output_per_1m": "0.60",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-GROQ",
+        "BILL-GROQ"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Production-model list price; excludes Flex, Batch, caching, built-in search/code tools and contract discounts."
+    },
+    {
+      "id": "openrouter-qwen-free",
+      "provider_id": "openrouter",
+      "model_id": "qwen/qwen3.8-27b:free",
+      "tier": "free",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0",
+      "output_per_1m": "0",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-OR-FREE"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Exact :free route only. Selected downstream endpoint and Free/prepaid conflict remain unresolved; do not substitute a paid model ID.",
+      "endpoint": null,
+      "endpoint_status": "TODO-VERIFY"
+    },
+    {
+      "id": "openrouter-qwen-chutes-paid",
+      "provider_id": "openrouter",
+      "model_id": "qwen/qwen3.8-27b",
+      "tier": "standard_pay_as_you_go",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0.039",
+      "output_per_1m": "1.25",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-OR-PAID"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Observed Chutes endpoint rate only. Other endpoints have different prices; this is not a bound for automatic routing or fallbacks. Credit-purchase fees are separate.",
+      "endpoint": "Chutes",
+      "endpoint_status": "observed_not_approved"
+    },
+    {
+      "id": "workers-ai-8b-free",
+      "provider_id": "cloudflare-workers-ai",
+      "model_id": "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
+      "tier": "workers_free_included",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0",
+      "output_per_1m": "0",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-CF"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Zero inference charge only within the one shared 10,000-Neuron daily account allowance; over-limit Free operations fail. Do not multiply allowance by model.",
+      "neuron_meter": {
+        "input_neurons_per_1m": 4119,
+        "output_neurons_per_1m": 34868,
+        "source_ids": [
+          "PRICE-CF"
+        ],
+        "checked_at": "2026-10-12"
+      }
+    },
+    {
+      "id": "workers-ai-8b-paid",
+      "provider_id": "cloudflare-workers-ai",
+      "model_id": "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
+      "tier": "workers_paid_overage",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0.045",
+      "output_per_1m": "0.384",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-CF"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Published token equivalents for neuron-metered overage beyond the shared allowance. Workers plan/hosting charges excluded; neuron billing and rounding must be verified.",
+      "neuron_meter": {
+        "input_neurons_per_1m": 4119,
+        "output_neurons_per_1m": 34868,
+        "source_ids": [
+          "PRICE-CF"
+        ],
+        "checked_at": "2026-10-12"
+      }
+    },
+    {
+      "id": "workers-ai-70b-free",
+      "provider_id": "cloudflare-workers-ai",
+      "model_id": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "tier": "workers_free_included",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0",
+      "output_per_1m": "0",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-CF"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Zero inference charge only within the one shared 10,000-Neuron daily account allowance; over-limit Free operations fail. Do not multiply allowance by model.",
+      "neuron_meter": {
+        "input_neurons_per_1m": 26668,
+        "output_neurons_per_1m": 204805,
+        "source_ids": [
+          "PRICE-CF"
+        ],
+        "checked_at": "2026-10-12"
+      }
+    },
+    {
+      "id": "workers-ai-70b-paid",
+      "provider_id": "cloudflare-workers-ai",
+      "model_id": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "tier": "workers_paid_overage",
+      "currency": "USD",
+      "tokens_per_unit": 1000000,
+      "input_per_1m": "0.293",
+      "output_per_1m": "2.253",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-CF"
+      ],
+      "billing_mode": "standard_online",
+      "input_scope": "text_uncached",
+      "output_scope": "text",
+      "effective_from": null,
+      "effective_until": null,
+      "period_status_on_review": "current_observation",
+      "eligible_for_feasibility": false,
+      "model_class": null,
+      "model_class_status": "TODO-VERIFY",
+      "notes": "Published token equivalents for neuron-metered overage beyond the shared allowance. Workers plan/hosting charges excluded; neuron billing and rounding must be verified.",
+      "neuron_meter": {
+        "input_neurons_per_1m": 26668,
+        "output_neurons_per_1m": 204805,
+        "source_ids": [
+          "PRICE-CF"
+        ],
+        "checked_at": "2026-10-12"
+      }
+    }
+  ],
+  "provider_platform_fee_schedules": [
+    {
+      "id": "openrouter-standard-credit-purchase",
+      "provider_id": "openrouter",
+      "tier": "standard_pay_as_you_go",
+      "currency": "USD",
+      "percentage_rate": "0.055",
+      "minimum_fee_minor": 80,
+      "minor_units_per_major": 100,
+      "fee_event": "credit_purchase",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "FEE-OR-PLAN",
+        "FEE-OR-MIN"
+      ],
+      "eligible_for_feasibility": false,
+      "unverified_terms": {
+        "status": "TODO-VERIFY",
+        "gross_net_calculation_basis": null,
+        "rounding_rule": null,
+        "tax_treatment": null
+      },
+      "open_question_ids": [
+        "PRICE-OR-CREDITS",
+        "PRICE-TAX",
+        "PROV-OR-TIER"
+      ]
+    },
+    {
+      "id": "openrouter-business-credit-purchase",
+      "provider_id": "openrouter",
+      "tier": "business",
+      "currency": "USD",
+      "percentage_rate": "0.08",
+      "minimum_fee_minor": null,
+      "minor_units_per_major": 100,
+      "fee_event": "credit_purchase",
+      "status": "PARTIALLY_VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "FEE-OR-PLAN"
+      ],
+      "eligible_for_feasibility": false,
+      "unverified_terms": {
+        "status": "TODO-VERIFY",
+        "minimum_fee_minor": null,
+        "gross_net_calculation_basis": null,
+        "rounding_rule": null,
+        "tax_treatment": null
+      },
+      "open_question_ids": [
+        "PRICE-OR-CREDITS",
+        "PRICE-TAX"
+      ]
+    },
+    {
+      "id": "cloudflare-neuron-meter",
+      "provider_id": "cloudflare-workers-ai",
+      "tier": "workers_paid_overage",
+      "currency": "USD",
+      "neuron_price": "0.011",
+      "neurons_per_price_unit": 1000,
+      "shared_daily_included_neurons": 10000,
+      "reset_time_utc": "00:00",
+      "status": "VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "PRICE-CF"
+      ],
+      "eligible_for_feasibility": false,
+      "notes": "Alternative meter representation of model token prices, not an additional fee. Paid Workers base-plan and other hosting/storage costs remain TODO-VERIFY."
+    }
+  ],
+  "fx_rates": [
+    {
+      "id": "bb-usdbdt-war-2026-10-12",
+      "base_currency": "USD",
+      "quote_currency": "BDT",
+      "quote_units_per_base_unit": "123.2800",
+      "rate_type": "interbank_weighted_average_reference",
+      "effective_at": "2026-10-12",
+      "status": "VERIFIED_PUBLIC_REFERENCE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "FX-BB"
+      ],
+      "eligible_for_feasibility": false,
+      "notes": "Bangladesh Bank sheet uses prior-business-day domestic market information. Government/international-organization reference; not this project's card settlement rate."
+    },
+    {
+      "id": "ebl-usdbdt-card-2026-10-12",
+      "base_currency": "USD",
+      "quote_currency": "BDT",
+      "quote_units_per_base_unit": "124.00",
+      "rate_type": "published_card_payment_reference",
+      "effective_at": "2026-10-12",
+      "status": "VERIFIED_PUBLIC_REFERENCE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "FX-EBL"
+      ],
+      "eligible_for_feasibility": false,
+      "notes": "Published EBL All Card Related Payment rate. Issuer not selected; final settlement-date conversion, issuer charges and taxes are unverified. No bank/payment choice is implied."
+    },
+    {
+      "id": "project-provider-settlement-fx",
+      "base_currency": "USD",
+      "quote_currency": "BDT",
+      "quote_units_per_base_unit": null,
+      "rate_type": "actual_provider_payment_settlement",
+      "effective_at": null,
+      "status": "TODO-VERIFY",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "FX-BB",
+        "FX-EBL"
+      ],
+      "eligible_for_feasibility": false,
+      "open_question_ids": [
+        "FX-SETTLEMENT",
+        "PRICE-TAX"
+      ],
+      "notes": "Requires chosen lawful payment method/issuer, settlement-date rate and all applicable acquisition charges. No operational FX is selected."
+    }
+  ],
+  "payment_fee_schedules": [
+    {
+      "id": "sslcommerz-basic",
+      "gateway": "SSLCommerz",
+      "route": "aggregator_basic",
+      "currency": "BDT",
+      "minor_units_per_major": 100,
+      "status": "PARTIALLY_VERIFIED_PUBLIC_SCHEDULE",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "FEE-SSL",
+        "TERM-SSL"
+      ],
+      "contract_confirmed": false,
+      "eligible_for_feasibility": false,
+      "transaction_fees": [
+        {
+          "channel_group": "standard_including_visa_mastercard_bkash_nagad_rocket",
+          "percentage_rate": "0.025",
+          "fee_basis": "successful_transaction_amount",
+          "status": "VERIFIED_PUBLIC_SCHEDULE",
+          "checked_at": "2026-10-12",
+          "source_ids": [
+            "FEE-SSL"
+          ]
+        },
+        {
+          "channel_group": "amex",
+          "percentage_rate": "0.035",
+          "fee_basis": "successful_transaction_amount",
+          "status": "VERIFIED_PUBLIC_SCHEDULE",
+          "checked_at": "2026-10-12",
+          "source_ids": [
+            "FEE-SSL"
+          ]
+        }
+      ],
+      "setup_fee": {
+        "amount_minor": 2550000,
+        "currency": "BDT",
+        "frequency": "one_time",
+        "refundable": false,
+        "status": "VERIFIED_PUBLIC_SCHEDULE",
+        "checked_at": "2026-10-12",
+        "source_ids": [
+          "FEE-SSL"
+        ]
+      },
+      "refund_capabilities": {
+        "partial_refund": true,
+        "receipt_min_business_days": 5,
+        "receipt_max_business_days": 7,
+        "status": "VERIFIED_PUBLIC_DOCUMENTATION",
+        "checked_at": "2026-10-12",
+        "source_ids": [
+          "TERM-SSL"
+        ],
+        "notes": "Published customer refund receipt estimate; original fee return and merchant settlement schedule remain unknown."
+      },
+      "unverified_terms": {
+        "status": "TODO-VERIFY",
+        "fixed_transaction_fee_minor": null,
+        "minimum_transaction_fee_minor": null,
+        "fee_rounding_rule": null,
+        "vat_rate": null,
+        "tax_inclusion": null,
+        "annual_maintenance_fee_minor": null,
+        "refund_fee_minor": null,
+        "original_transaction_fee_returned": null,
+        "chargeback_fee_minor": null,
+        "settlement_delay_business_days": null,
+        "settlement_transfer_fee_minor": null,
+        "rolling_reserve": null,
+        "minimum_supported_pack_price_minor": null
+      },
+      "open_question_ids": [
+        "FEE-SSLCOMMERZ",
+        "PRICE-TAX",
+        "D6/D11/D12/D13"
+      ],
+      "notes": "Advertised Basic pricing, not the project's signed fee schedule. Setup cost belongs in startup funding; it is not a per-transaction charge. Aggregated bKash/Nagad rates do not establish direct gateway rates."
+    },
+    {
+      "id": "bkash-direct",
+      "gateway": "bKash",
+      "route": "direct_online_merchant",
+      "currency": "BDT",
+      "minor_units_per_major": 100,
+      "status": "TODO-VERIFY",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "TERM-BKASH-BIZ",
+        "TERM-BKASH-PGW"
+      ],
+      "contract_confirmed": false,
+      "eligible_for_feasibility": false,
+      "transaction_fees": [
+        {
+          "channel_group": "direct_online_payment",
+          "percentage_rate": null,
+          "fee_basis": null,
+          "status": "TODO-VERIFY",
+          "checked_at": "2026-10-12",
+          "source_ids": [
+            "TERM-BKASH-BIZ",
+            "TERM-BKASH-PGW"
+          ]
+        }
+      ],
+      "setup_fee": {
+        "amount_minor": null,
+        "currency": "BDT",
+        "frequency": null,
+        "refundable": null,
+        "status": "TODO-VERIFY",
+        "checked_at": "2026-10-12",
+        "source_ids": [
+          "TERM-BKASH-BIZ",
+          "TERM-BKASH-PGW"
+        ]
+      },
+      "unverified_terms": {
+        "status": "TODO-VERIFY",
+        "fixed_transaction_fee_minor": null,
+        "minimum_transaction_fee_minor": null,
+        "fee_rounding_rule": null,
+        "vat_rate": null,
+        "tax_inclusion": null,
+        "annual_maintenance_fee_minor": null,
+        "refund_fee_minor": null,
+        "original_transaction_fee_returned": null,
+        "chargeback_fee_minor": null,
+        "settlement_delay_business_days": null,
+        "settlement_transfer_fee_minor": null,
+        "rolling_reserve": null,
+        "minimum_supported_pack_price_minor": null
+      },
+      "open_question_ids": [
+        "FEE-BKASH",
+        "PRICE-TAX",
+        "D6/D11/D12/D13"
+      ],
+      "notes": "Official online-business and dynamic-charging pages do not confirm this project's merchant fee schedule. QR/PRA, consumer cash-out and customer dynamic surcharges cannot substitute for direct online PGW charges."
+    },
+    {
+      "id": "nagad-direct",
+      "gateway": "Nagad",
+      "route": "direct_online_merchant",
+      "currency": "BDT",
+      "minor_units_per_major": 100,
+      "status": "TODO-VERIFY",
+      "checked_at": "2026-10-12",
+      "source_ids": [
+        "TERM-NAGAD-MERCHANT",
+        "TERM-NAGAD-CHARGES"
+      ],
+      "contract_confirmed": false,
+      "eligible_for_feasibility": false,
+      "transaction_fees": [
+        {
+          "channel_group": "direct_online_payment",
+          "percentage_rate": null,
+          "fee_basis": null,
+          "status": "TODO-VERIFY",
+          "checked_at": "2026-10-12",
+          "source_ids": [
+            "TERM-NAGAD-MERCHANT",
+            "TERM-NAGAD-CHARGES"
+          ]
+        }
+      ],
+      "setup_fee": {
+        "amount_minor": null,
+        "currency": "BDT",
+        "frequency": null,
+        "refundable": null,
+        "status": "TODO-VERIFY",
+        "checked_at": "2026-10-12",
+        "source_ids": [
+          "TERM-NAGAD-MERCHANT",
+          "TERM-NAGAD-CHARGES"
+        ]
+      },
+      "unverified_terms": {
+        "status": "TODO-VERIFY",
+        "fixed_transaction_fee_minor": null,
+        "minimum_transaction_fee_minor": null,
+        "fee_rounding_rule": null,
+        "vat_rate": null,
+        "tax_inclusion": null,
+        "annual_maintenance_fee_minor": null,
+        "refund_fee_minor": null,
+        "original_transaction_fee_returned": null,
+        "chargeback_fee_minor": null,
+        "settlement_delay_business_days": null,
+        "settlement_transfer_fee_minor": null,
+        "rolling_reserve": null,
+        "minimum_supported_pack_price_minor": null
+      },
+      "open_question_ids": [
+        "FEE-NAGAD",
+        "PRICE-TAX",
+        "D6/D11/D12/D13"
+      ],
+      "notes": "No verified direct online merchant rate was recovered from the official merchant/charges pages. Consumer cash-out or aggregator channel rates cannot substitute for merchant PGW charges."
+    }
+  ],
+  "unresolved_costs": [
+    {
+      "id": "PRICE-MODELS",
+      "status": "TODO-VERIFY",
+      "value": null,
+      "needed": "Owner-selected model classes/routes, account/model access, output/hidden-reasoning billing, regional entitlement and every permitted fallback's worst-case rates.",
+      "needed_before": "Financial feasibility, registry or production calculator",
+      "source_ids": [
+        "PRICE-GEMINI",
+        "PRICE-GROQ",
+        "PRICE-OR-PAID",
+        "PRICE-CF"
+      ]
+    },
+    {
+      "id": "PRICE-TOOLS",
+      "status": "TODO-VERIFY",
+      "value": null,
+      "needed": "Any enabled search/code tool, cache/storage, audio/image/video, batch/flex or other surcharge; keep optional paths excluded until scoped prices are collected.",
+      "needed_before": "Optional-cost route budgeting",
+      "source_ids": [
+        "PRICE-GEMINI",
+        "PRICE-GROQ",
+        "PRICE-CF"
+      ]
+    },
+    {
+      "id": "PRICE-TAX",
+      "status": "TODO-VERIFY",
+      "value": null,
+      "needed": "Applicable supplier/gateway/foreign-card taxes, tax inclusion and any withholding or other funding charges; obtain account/contract/advisor evidence.",
+      "needed_before": "All-in cost or pack-sale decisions",
+      "source_ids": [
+        "FEE-SSL",
+        "FEE-OR-PLAN",
+        "FX-EBL"
+      ]
+    },
+    {
+      "id": "PRICE-PROVIDER-BILLING",
+      "status": "TODO-VERIFY",
+      "value": null,
+      "needed": "Chosen provider plan/subscription costs, invoice currency, acquisition fees and settlement/rounding; Cloudflare paid base plan and hosting/storage cost are outside inference rates.",
+      "needed_before": "All-in cost or pack-sale decisions",
+      "source_ids": [
+        "BILL-GROQ",
+        "PRICE-CF",
+        "FEE-OR-PLAN"
+      ]
+    }
+  ],
+  "financial_gate": {
+    "production_pricing_approved": false,
+    "pack_sales_ready": false,
+    "phase_0_go_supported": false,
+    "selected_fx_rate_id": null,
+    "selected_gateway_schedule_id": null,
+    "approved_model_price_ids": [],
+    "eligible_for_feasibility": false,
+    "open_question_ids": [
+      "D2",
+      "D3",
+      "D4",
+      "D10",
+      "D-AGE",
+      "EVAL",
+      "PRICING",
+      "FX-SETTLEMENT",
+      "PRICE-MODELS",
+      "PRICE-TOOLS",
+      "PRICE-TAX",
+      "PRICE-PROVIDER-BILLING",
+      "PRICE-OR-CREDITS",
+      "FEE-SSLCOMMERZ",
+      "FEE-BKASH",
+      "FEE-NAGAD",
+      "D6/D11/D12/D13"
+    ]
+  },
+  "sources": {
+    "PRICE-GEMINI": {
+      "title": "Gemini Developer API pricing",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "section": "Gemini 3.8 Flash / Gemini 3.5 Flash-Lite, Standard tables",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "PRICE-GROQ": {
+      "title": "Groq Supported Models",
+      "url": "https://console.groq.com/docs/models",
+      "section": "Production Models, GPT OSS 20B / 120B rows",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "BILL-GROQ": {
+      "title": "Groq Billing FAQs",
+      "url": "https://console.groq.com/docs/billing-faqs",
+      "section": "Upgrading to Developer / downgrading to Free",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "PRICE-CF": {
+      "title": "Workers AI pricing",
+      "url": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+      "section": "Free allocation / LLM model pricing",
+      "read_at": "2026-10-12",
+      "updated_at": "2026-10-09",
+      "authority": "official_primary_source"
+    },
+    "PRICE-OR-FREE": {
+      "title": "OpenRouter Qwen3.8 27B free route",
+      "url": "https://openrouter.ai/qwen/qwen3.8-27b:free",
+      "section": "Price / Is Qwen3.8 27B free?",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "PRICE-OR-PAID": {
+      "title": "OpenRouter Qwen3.8 27B paid endpoints",
+      "url": "https://openrouter.ai/qwen/qwen3.8-27b",
+      "section": "Provider Input /M and Output /M table, Chutes row",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "FEE-OR-PLAN": {
+      "title": "OpenRouter Business plan comparison",
+      "url": "https://openrouter.ai/business",
+      "section": "One fee, on credit purchases",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "FEE-OR-MIN": {
+      "title": "OpenRouter official billing tutorial",
+      "url": "https://openrouter.ai/blog/tutorials/claude-code-openrouter/",
+      "section": "What it costs, and the free tier",
+      "read_at": "2026-10-12",
+      "updated_at": "2026-09-24",
+      "authority": "official_primary_source"
+    },
+    "FX-BB": {
+      "title": "Bangladesh Bank exchange rate of Taka",
+      "url": "https://www.bb.org.bd/en/index.php/econdata/exchangerate",
+      "section": "FX sheet effective 12/10/2026, USD/BDT WAR",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "FX-EBL": {
+      "title": "Eastern Bank foreign exchange rates",
+      "url": "https://www.ebl.com.bd/forexrate",
+      "section": "Currency Exchange Rate, All Card Related Payment, as on 12 October 2026",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "FEE-SSL": {
+      "title": "SSLCommerz pricing",
+      "url": "https://sslcommerz.com/pricing/",
+      "section": "Basic / Transaction Fees / One-Time Setup Fee",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "TERM-SSL": {
+      "title": "SSLCommerz FAQ",
+      "url": "https://sslcommerz.com/faq/",
+      "section": "Partial refunds / customer refund receipt time",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "TERM-BKASH-BIZ": {
+      "title": "bKash business solutions",
+      "url": "https://www.bkash.com/en/business",
+      "section": "Online Business",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "TERM-BKASH-PGW": {
+      "title": "bKash Payment Gateway terms",
+      "url": "https://www.bkash.com/en/page/tokenized_checkout",
+      "section": "Dynamic Charging",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "TERM-NAGAD-MERCHANT": {
+      "title": "Nagad merchant application",
+      "url": "https://nagad.com.bd/en/forms/?form=be-a-merchant",
+      "section": "Be a Merchant form; no numeric merchant schedule in retrieved page",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    },
+    "TERM-NAGAD-CHARGES": {
+      "title": "Nagad limits and charges",
+      "url": "https://nagad.com.bd/en/limit-charges/",
+      "section": "Retrieved charge/limit tables; direct online merchant fees unconfirmed",
+      "read_at": "2026-10-12",
+      "updated_at": null,
+      "authority": "official_primary_source"
+    }
+  }
+}

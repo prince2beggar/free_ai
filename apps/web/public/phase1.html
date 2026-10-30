@@ -1,0 +1,2065 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta
+      name="description"
+      content="AI Nexus · All AI Models. One Platform. Explore, compare and use the best AI models in 3D."
+    />
+    <title>AI Nexus · All AI Models. One Platform.</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/phase1.css" />
+    <script type="module" src="/phase1.js"></script>
+  </head>
+  <body>
+    <div class="workspace" id="app-workspace">
+      <!-- =========================================================================
+           LEFT NAVIGATION SIDEBAR (AI Nexus Futuristic 3D Sidebar)
+           ========================================================================= -->
+      <aside
+        class="sidebar modern-sidebar nexus-sidebar"
+        id="sidebar"
+        aria-label="Workspace navigation"
+      >
+        <!-- Brand Header: 3D Crystal Hexagon Logo -->
+        <div class="brand-row nexus-brand-row">
+          <a
+            class="brand nexus-brand"
+            href="/"
+            id="brand-home-link"
+            title="AI Nexus · All AI Models"
+          >
+            <div class="nexus-brand-badge-3d" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <polygon
+                  points="16,2 30,10 30,22 16,30 2,22 2,10"
+                  stroke="url(#nexus-brand-grad)"
+                  stroke-width="2.5"
+                  fill="rgba(0,210,255,0.12)"
+                />
+                <polygon points="16,8 24,13 24,19 16,24 8,19 8,13" fill="url(#nexus-brand-inner)" />
+                <circle cx="16" cy="16" r="3" fill="#ffffff" />
+                <defs>
+                  <linearGradient id="nexus-brand-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00d2ff" />
+                    <stop offset="50%" stop-color="#0070f3" />
+                    <stop offset="100%" stop-color="#7928ca" />
+                  </linearGradient>
+                  <linearGradient id="nexus-brand-inner" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00d2ff" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#0070f3" stop-opacity="0.4" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="nexus-brand-text">
+              <span class="nexus-brand-title">AI Nexus</span>
+              <span class="nexus-beta-tag">Beta</span>
+            </div>
+          </a>
+
+          <div class="sidebar-header-actions">
+            <button
+              id="sidebar-search-btn"
+              class="sidebar-icon-btn"
+              type="button"
+              title="Search models & tools (/)"
+              aria-label="Search"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+            <button
+              id="sidebar-toggle-btn"
+              class="sidebar-icon-btn"
+              type="button"
+              title="Toggle sidebar"
+              aria-label="Toggle sidebar"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="3" x2="9" y2="21"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Primary Navigation Links (Matching Screenshot) -->
+        <nav class="nexus-nav-menu" aria-label="Main Navigation">
+          <button type="button" class="nexus-nav-item active" id="nav-item-home">
+            <svg
+              class="nexus-nav-svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span class="nexus-nav-label">Home</span>
+          </button>
+
+          <button type="button" class="nexus-nav-item" id="nav-item-chat">
+            <svg
+              class="nexus-nav-svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span class="nexus-nav-label">Chat</span>
+          </button>
+
+          <button type="button" class="nexus-nav-item" id="nav-item-models">
+            <svg
+              class="nexus-nav-svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span class="nexus-nav-label">Models</span>
+          </button>
+
+          <button type="button" class="nexus-nav-item" id="nav-item-tools">
+            <svg
+              class="nexus-nav-svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+              ></path>
+            </svg>
+            <span class="nexus-nav-label">Tools</span>
+          </button>
+
+          <button type="button" class="nexus-nav-item" id="nav-item-library">
+            <svg
+              class="nexus-nav-svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span class="nexus-nav-label">Library</span>
+          </button>
+
+          <button type="button" class="nexus-nav-item" id="nav-item-history">
+            <svg
+              class="nexus-nav-svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span class="nexus-nav-label">History</span>
+          </button>
+
+          <button type="button" class="nexus-nav-item" id="nav-item-settings">
+            <svg
+              class="nexus-nav-svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="3"></circle>
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+              ></path>
+            </svg>
+            <span class="nexus-nav-label">Settings</span>
+          </button>
+        </nav>
+
+        <!-- Preserved New Chat & Saved Conversations (Kept for full test backwards-compatibility) -->
+        <button id="new-chat" class="new-chat-pill-btn modern-new-chat" type="button" disabled>
+          <span class="new-chat-sparkle">✦</span>
+          <span class="btn-text">New chat</span>
+          <span class="kbd-shortcut">Ctrl K</span>
+        </button>
+
+        <!-- Preserved Recent Conversations Container -->
+        <div id="signed-in-nav" class="sidebar-recents-section" hidden>
+          <div class="sidebar-group-title">RECENT CONVERSATIONS</div>
+          <nav
+            id="conversation-list"
+            class="conversation-nav-list"
+            aria-label="Saved conversations"
+          ></nav>
+          <p id="empty-list" class="muted sidebar-empty-hint">No conversations yet.</p>
+        </div>
+
+        <!-- Admin Only Section -->
+        <div id="sidebar-admin-section" class="sidebar-nav-group" hidden>
+          <div class="sidebar-group-title">ADMIN CONTROLS</div>
+          <div class="sidebar-nav-menu">
+            <button
+              type="button"
+              class="sidebar-nav-link"
+              id="nav-item-keys"
+              title="Manage AI API Keys &amp; Rotation"
+            >
+              <span class="nav-icon">🔑</span>
+              <span class="nav-label">AI Key Vault</span>
+              <span class="nav-mini-chip chip-green">Active</span>
+            </button>
+            <a
+              href="/admin"
+              class="sidebar-nav-link"
+              id="nav-item-tokens"
+              title="Token Ledger &amp; Capacity Pool"
+              style="text-decoration: none"
+            >
+              <span class="nav-icon">🪙</span>
+              <span class="nav-label">Token Capacity</span>
+              <span class="nav-mini-chip chip-gold">1.94M Free</span>
+            </a>
+            <a
+              href="/admin"
+              class="sidebar-nav-link"
+              id="nav-item-admin"
+              title="Super Admin Control Center"
+              style="text-decoration: none"
+            >
+              <span class="nav-icon">🛡️</span>
+              <span class="nav-label">Super Admin</span>
+              <span class="nav-mini-chip chip-purple">Root</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Preserved Hidden Tool Links for backwards compatibility -->
+        <div style="display: none">
+          <button type="button" id="nav-item-chat-mode"></button>
+          <button type="button" id="nav-item-images"></button>
+          <button type="button" id="nav-item-codex"></button>
+          <button type="button" id="nav-item-resume" data-project="resume"></button>
+          <button type="button" id="nav-item-plugins"></button>
+          <button type="button" id="nav-item-prompt" data-project="prompt"></button>
+          <button type="button" id="nav-item-scheduled"></button>
+          <button type="button" id="nav-item-explore"></button>
+        </div>
+
+        <!-- Bottom Sidebar Cards: Unlock More Power & Free Plan Progress (From Screenshot) -->
+        <div class="nexus-sidebar-bottom">
+          <!-- Unlock More Power Glowing 3D Card -->
+          <div class="nexus-power-card" id="nexus-power-card">
+            <div class="nexus-power-icon-box">
+              <span class="nexus-crown-icon">👑</span>
+            </div>
+            <h4 class="nexus-power-title">Unlock More Power</h4>
+            <p class="nexus-power-desc">
+              Get premium access for higher limits, advanced models, and exclusive features.
+            </p>
+            <button type="button" class="nexus-power-btn" id="btn-sidebar-upgrade">
+              <span>Upgrade Now</span>
+              <span class="nexus-arrow">→</span>
+            </button>
+          </div>
+
+          <!-- Free Plan Usage Ring Indicator (From Screenshot) -->
+          <div class="nexus-usage-card" id="nexus-usage-card">
+            <div class="nexus-usage-row">
+              <div class="nexus-radial-ring-wrap">
+                <svg class="nexus-radial-svg" width="34" height="34" viewBox="0 0 36 36">
+                  <path
+                    class="nexus-ring-bg"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    fill="none"
+                    stroke="rgba(255,255,255,0.1)"
+                    stroke-width="3.5"
+                  />
+                  <path
+                    class="nexus-ring-progress"
+                    id="nexus-ring-progress"
+                    stroke-dasharray="50, 100"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    fill="none"
+                    stroke="url(#nexus-cyan-ring-grad)"
+                    stroke-width="3.5"
+                    stroke-linecap="round"
+                  />
+                  <defs>
+                    <linearGradient id="nexus-cyan-ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#00d2ff" />
+                      <stop offset="100%" stop-color="#0070f3" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="nexus-usage-text">
+                <div class="nexus-plan-heading-row">
+                  <span class="nexus-plan-name">Free Plan</span>
+                  <button
+                    type="button"
+                    class="nexus-info-icon-btn"
+                    id="btn-sidebar-plan-info"
+                    title="Usage Information"
+                    aria-label="Usage info"
+                  >
+                    <svg
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="16" x2="12" y2="12"></line>
+                      <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                  </button>
+                </div>
+                <span class="nexus-plan-quota" id="nexus-plan-quota-text">5/10 daily uses</span>
+              </div>
+            </div>
+            <div class="nexus-linear-track">
+              <div class="nexus-linear-fill" id="nexus-linear-fill" style="width: 50%"></div>
+            </div>
+          </div>
+
+          <!-- Preserved User Profile & Legal Links -->
+          <footer class="sidebar-footer">
+            <div class="user-profile-card" id="user-profile-card">
+              <div class="user-avatar-circle" id="user-avatar">R</div>
+              <div class="user-meta">
+                <span class="user-display-name" id="user-display-name">Rifat</span>
+                <span class="user-plan-badge">Free Plan</span>
+              </div>
+              <button
+                id="sidebar-logout"
+                class="sidebar-logout-icon-btn"
+                type="button"
+                title="Sign out"
+                aria-label="Sign out"
+              >
+                🚪
+              </button>
+            </div>
+            <nav class="legal-links" aria-label="Legal documents">
+              <a href="/legal/terms.html">Terms</a>
+              <a href="/legal/privacy.html">Privacy</a>
+              <a href="/legal/aup.html">AUP</a>
+              <a href="/legal/cookies.html">Cookies</a>
+              <a href="/legal/refunds.html">Refunds</a>
+            </nav>
+          </footer>
+        </div>
+      </aside>
+
+      <!-- =========================================================================
+           MAIN STAGE: HEADER + 3D DASHBOARD OR CHAT WORKSPACE
+           ========================================================================= -->
+      <main class="nexus-main">
+        <!-- Top App Bar (From Screenshot) -->
+        <header class="topbar nexus-topbar" id="nexus-topbar">
+          <div class="topbar-left">
+            <button
+              id="mobile-sidebar-toggle"
+              class="sidebar-icon-btn mobile-only"
+              type="button"
+              aria-label="Toggle navigation"
+            >
+              ☰
+            </button>
+            <!-- Preserved mode switcher pills -->
+            <div
+              class="segmented-control modern-segmented"
+              role="tablist"
+              aria-label="Mode switcher"
+            >
+              <button
+                type="button"
+                class="segment-pill-btn active"
+                id="tab-chat"
+                role="tab"
+                aria-selected="true"
+              >
+                💬 Chat
+              </button>
+              <button
+                type="button"
+                class="segment-pill-btn"
+                id="tab-work"
+                role="tab"
+                aria-selected="false"
+              >
+                ✦ Studio
+              </button>
+            </div>
+          </div>
+
+          <!-- Center: Global Quick Search Input with shortcut "/" (From Screenshot) -->
+          <div class="topbar-center">
+            <div
+              class="nexus-search-capsule"
+              id="nexus-search-capsule"
+              title="Search models, tools, conversations (Press /)"
+            >
+              <svg
+                class="nexus-search-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input
+                type="text"
+                id="global-search-input"
+                class="nexus-search-input"
+                placeholder="Search models, tools..."
+                aria-label="Search models and tools"
+                autocomplete="off"
+              />
+              <kbd class="nexus-kbd-pill">/</kbd>
+            </div>
+          </div>
+
+          <!-- Right: Notifications, Profile, Theme & Language (From Screenshot) -->
+          <div class="topbar-right">
+            <!-- Notifications Bell with unread pulse -->
+            <button
+              type="button"
+              id="btn-notifications"
+              class="nexus-topbar-icon-btn"
+              title="System Notifications"
+              aria-label="Notifications"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="nexus-notif-dot" id="nexus-notif-dot"></span>
+            </button>
+
+            <!-- User Profile Avatar & Name (Rifat · Free Plan) -->
+            <div class="nexus-top-user-pill" id="nexus-top-user-pill" title="User Profile">
+              <div class="nexus-top-avatar" id="nexus-top-avatar">
+                <img
+                  id="nexus-user-photo"
+                  src="/favicon.svg"
+                  alt="Rifat"
+                  class="nexus-avatar-img"
+                />
+              </div>
+              <div class="nexus-top-user-meta">
+                <span class="nexus-top-username" id="nexus-top-username">Rifat</span>
+                <span class="nexus-top-tier">Free Plan</span>
+              </div>
+            </div>
+
+            <!-- User Logout Button (Accessible on desktop & mobile) -->
+            <button
+              id="logout"
+              class="nexus-topbar-icon-btn nexus-logout-btn"
+              type="button"
+              title="Sign out"
+              aria-label="Sign out"
+            >
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+            </button>
+
+            <!-- Theme Toggle -->
+            <button
+              type="button"
+              id="theme-toggle"
+              class="theme-toggle-btn nexus-theme-btn"
+              title="Toggle Light / Dark mode"
+              aria-label="Toggle theme"
+            >
+              <span class="theme-icon">🌓</span>
+            </button>
+
+            <!-- Language Switcher -->
+            <div class="language-toggle modern-lang-toggle" aria-label="Response language">
+              <button type="button" data-language="en" aria-pressed="true">English</button>
+              <button type="button" data-language="bn" aria-pressed="false" lang="bn">বাংলা</button>
+            </div>
+
+            <!-- Hidden Preserved Telemetry Elements -->
+            <span id="account-label" hidden>Universal Free AI Gateway</span>
+            <span id="tokens-mini-pill" hidden>🪙 1.94M Ready</span>
+            <div id="topbar-admin-pill" hidden><a href="/admin">Admin</a></div>
+          </div>
+        </header>
+
+        <!-- Status Message Banner -->
+        <p id="status" class="status" role="status" aria-live="polite">
+          Loading the local workspace…
+        </p>
+
+        <!-- Abuse Verification Section -->
+        <section
+          id="abuse-verification"
+          class="account-panel abuse-verification"
+          hidden
+          aria-labelledby="abuse-verification-heading"
+        >
+          <h2 id="abuse-verification-heading">Local verification</h2>
+          <p>
+            This synthetic challenge asks your browser to do a small amount of work. It does not
+            verify a human.
+          </p>
+          <p id="abuse-verification-status" role="status" aria-live="polite"></p>
+          <button id="abuse-verify" class="secondary" type="button">Verify locally</button>
+        </section>
+
+        <!-- =========================================================================
+             SECTION A: AI NEXUS 3D HOME DASHBOARD (Exact Match to User's Screenshot)
+             ========================================================================= -->
+        <div id="nexus-home-view" class="nexus-home-view">
+          <!-- 1. HERO SECTION -->
+          <section class="nexus-hero-section">
+            <div class="nexus-hero-grid">
+              <!-- Left Hero Column: Headline, Prompt Capsule, Quick Pills -->
+              <div class="nexus-hero-left">
+                <!-- Eyebrow Pill -->
+                <div class="nexus-hero-pill-badge">
+                  <span class="sparkle-cyan">✦</span>
+                  <span>The Ultimate AI Aggregator</span>
+                </div>
+
+                <!-- Main Giant 3D Headline -->
+                <h1 class="nexus-hero-title">
+                  All AI Models.<br />
+                  <span class="nexus-gradient-cyan">One Platform.</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="nexus-hero-desc">
+                  Explore, compare and use the best AI models from around the world. Chat, create,
+                  code, and more — all in one place.
+                </p>
+
+                <!-- Floating Interactive Prompt Input Capsule -->
+                <div class="nexus-hero-input-capsule" id="nexus-hero-input-capsule">
+                  <span class="capsule-sparkle">✦</span>
+                  <input
+                    type="text"
+                    id="hero-prompt-input"
+                    class="hero-prompt-input"
+                    placeholder="Ask anything... (e.g. Write a blog, generate an image, or solve a problem)"
+                    aria-label="Ask anything"
+                  />
+                  <button
+                    type="button"
+                    id="hero-prompt-send"
+                    class="hero-prompt-send-btn"
+                    title="Send message"
+                    aria-label="Submit prompt"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- 4 Quick Starter Pills (From Screenshot) -->
+                <div class="nexus-quick-starter-pills" aria-label="Suggested starter prompts">
+                  <button
+                    type="button"
+                    class="nexus-starter-pill"
+                    data-prompt="Create a modern responsive website landing page with interactive 3D elements and dark mode."
+                  >
+                    Create a website
+                  </button>
+                  <button
+                    type="button"
+                    class="nexus-starter-pill"
+                    data-prompt="Write an engaging, insightful blog post about the rise of multi-model AI aggregators."
+                  >
+                    Write a blog
+                  </button>
+                  <button
+                    type="button"
+                    class="nexus-starter-pill"
+                    data-prompt="Generate a stunning 3D futuristic cybernetic neon brain concept image."
+                  >
+                    Generate an image
+                  </button>
+                  <button
+                    type="button"
+                    class="nexus-starter-pill"
+                    data-prompt="Explain quantum computing and quantum entanglement in simple, intuitive terms with real-world examples."
+                  >
+                    Explain a concept
+                  </button>
+                </div>
+              </div>
+
+              <!-- Center Hero Column: 3D Holographic AI Brain Sphere with Orbiting Badges -->
+              <div class="nexus-hero-center">
+                <div class="nexus-3d-orb-stage" id="nexus-3d-orb-stage">
+                  <!-- Concentric glowing neon rings on floor (Pedestal) -->
+                  <div class="nexus-orb-pedestal">
+                    <div class="nexus-pedestal-ring ring-1"></div>
+                    <div class="nexus-pedestal-ring ring-2"></div>
+                    <div class="nexus-pedestal-ring ring-3"></div>
+                    <div class="nexus-pedestal-beam"></div>
+                    <div class="nexus-floor-glow"></div>
+                  </div>
+
+                  <!-- Central 3D Glass Sphere with 3D Holographic Brain Canvas -->
+                  <div class="nexus-orb-glass-sphere" id="nexus-orb-glass-sphere">
+                    <div class="nexus-sphere-specular"></div>
+                    <div class="nexus-sphere-inner-glow"></div>
+                    <!-- Real-time Interactive 3D Neural Brain Canvas -->
+                    <canvas
+                      id="nexus-3d-brain-canvas"
+                      width="380"
+                      height="380"
+                      aria-label="Interactive 3D Holographic Brain"
+                    ></canvas>
+                  </div>
+
+                  <!-- 6 Orbiting 3D Floating Model Badges (From Screenshot) -->
+                  <div class="nexus-orbit-container" id="nexus-orbit-container">
+                    <!-- 1. Google (Top Left) -->
+                    <div
+                      class="nexus-orbit-badge badge-google"
+                      data-model="gemini:gemini-2.0-flash"
+                      title="Google Gemini"
+                    >
+                      <div class="badge-inner">
+                        <svg width="22" height="22" viewBox="0 0 24 24">
+                          <path
+                            fill="#4285F4"
+                            d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"
+                          />
+                          <path
+                            fill="#34A853"
+                            d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"
+                          />
+                          <path
+                            fill="#FBBC05"
+                            d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"
+                          />
+                          <path
+                            fill="#EA4335"
+                            d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <!-- 2. OpenAI / ChatGPT (Top Center) -->
+                    <div
+                      class="nexus-orbit-badge badge-openai"
+                      data-model="openai:gpt-4o"
+                      title="ChatGPT"
+                    >
+                      <div class="badge-inner">
+                        <svg
+                          width="22"
+                          height="22"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          color="#10a37f"
+                        >
+                          <path
+                            d="M22.28 9.37a5.98 5.98 0 0 0-.52-4.99 6.09 6.09 0 0 0-6.49-2.9 6.06 6.06 0 0 0-4.66-2.07c-2.8 0-5.2 1.9-5.83 4.6a6.07 6.07 0 0 0-3.9 2.84 6.05 6.05 0 0 0 .73 7.02 5.98 5.98 0 0 0 .52 4.99 6.09 6.09 0 0 0 6.49 2.9 6.06 6.06 0 0 0 4.66 2.07c2.8 0 5.2-1.9 5.83-4.6a6.07 6.07 0 0 0 3.9-2.84 6.05 6.05 0 0 0-.73-7.02zM12 1.99c1.9 0 3.6 1.1 4.3 2.8l-1.3.7a3.84 3.84 0 0 0-3-1.7c-1.5 0-2.8.8-3.4 2.1l-1.3-.7a5.3 5.3 0 0 1 4.7-3.2z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <!-- 3. Meta Llama (Top Right) -->
+                    <div
+                      class="nexus-orbit-badge badge-llama"
+                      data-model="groq:qwen/qwen3.8-27b"
+                      title="Llama 3"
+                    >
+                      <div class="badge-inner">
+                        <span class="badge-emoji-icon">🦙</span>
+                      </div>
+                    </div>
+
+                    <!-- 4. Claude (Bottom Left) -->
+                    <div
+                      class="nexus-orbit-badge badge-claude"
+                      data-model="anthropic:claude-3-5-sonnet"
+                      title="Claude 3.5"
+                    >
+                      <div class="badge-inner">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#f97316">
+                          <polygon points="12,2 15,9 22,12 15,15 12,22 9,15 2,12 9,9" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <!-- 5. Gemini (Bottom Center) -->
+                    <div
+                      class="nexus-orbit-badge badge-gemini"
+                      data-model="gemini:gemini-2.0-flash"
+                      title="Gemini Flash"
+                    >
+                      <div class="badge-inner">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#38bdf8">
+                          <polygon
+                            points="12,1 14.5,9.5 23,12 14.5,14.5 12,23 9.5,14.5 1,12 9.5,9.5"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <!-- 6. DeepSeek / Cube (Right) -->
+                    <div
+                      class="nexus-orbit-badge badge-deepseek"
+                      data-model="openrouter:deepseek/deepseek-r1:free"
+                      title="DeepSeek R1"
+                    >
+                      <div class="badge-inner">
+                        <span class="badge-emoji-icon">🐳</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Hero Column: Quick Access Card (From Screenshot) -->
+              <div class="nexus-hero-right">
+                <div class="nexus-quick-access-card">
+                  <div class="nexus-quick-access-header">
+                    <div class="nexus-qa-title-wrap">
+                      <span class="nexus-qa-icon">⚡</span>
+                      <h3 class="nexus-qa-title">Quick Access</h3>
+                    </div>
+                    <button type="button" class="nexus-view-all-btn" id="btn-quick-access-view-all">
+                      View all →
+                    </button>
+                  </div>
+
+                  <div class="nexus-quick-access-list">
+                    <!-- Row 1: ChatGPT -->
+                    <button type="button" class="nexus-qa-row" data-model="openai:gpt-4o">
+                      <div class="nexus-qa-icon-tile icon-openai">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                          <circle cx="12" cy="12" r="9" />
+                        </svg>
+                      </div>
+                      <div class="nexus-qa-meta">
+                        <span class="nexus-qa-name">ChatGPT</span>
+                        <span class="nexus-qa-sub">Best for general purpose</span>
+                      </div>
+                      <span class="nexus-qa-arrow">→</span>
+                    </button>
+
+                    <!-- Row 2: Gemini -->
+                    <button type="button" class="nexus-qa-row" data-model="gemini:gemini-2.0-flash">
+                      <div class="nexus-qa-icon-tile icon-gemini">
+                        <span class="tile-symbol">✦</span>
+                      </div>
+                      <div class="nexus-qa-meta">
+                        <span class="nexus-qa-name">Gemini</span>
+                        <span class="nexus-qa-sub">Great for reasoning</span>
+                      </div>
+                      <span class="nexus-qa-arrow">→</span>
+                    </button>
+
+                    <!-- Row 3: Claude -->
+                    <button
+                      type="button"
+                      class="nexus-qa-row"
+                      data-model="anthropic:claude-3-5-sonnet"
+                    >
+                      <div class="nexus-qa-icon-tile icon-claude">
+                        <span class="tile-symbol">✹</span>
+                      </div>
+                      <div class="nexus-qa-meta">
+                        <span class="nexus-qa-name">Claude</span>
+                        <span class="nexus-qa-sub">Ideal for longer context</span>
+                      </div>
+                      <span class="nexus-qa-arrow">→</span>
+                    </button>
+
+                    <!-- Row 4: DeepSeek -->
+                    <button
+                      type="button"
+                      class="nexus-qa-row"
+                      data-model="openrouter:deepseek/deepseek-r1:free"
+                    >
+                      <div class="nexus-qa-icon-tile icon-deepseek">
+                        <span class="tile-symbol">🐳</span>
+                      </div>
+                      <div class="nexus-qa-meta">
+                        <span class="nexus-qa-name">DeepSeek</span>
+                        <span class="nexus-qa-sub">Good for coding</span>
+                      </div>
+                      <span class="nexus-qa-arrow">→</span>
+                    </button>
+
+                    <!-- Row 5: Llama 3 -->
+                    <button type="button" class="nexus-qa-row" data-model="groq:qwen/qwen3.8-27b">
+                      <div class="nexus-qa-icon-tile icon-llama">
+                        <span class="tile-symbol">🦙</span>
+                      </div>
+                      <div class="nexus-qa-meta">
+                        <span class="nexus-qa-name">Llama 3</span>
+                        <span class="nexus-qa-sub">Open source &amp; flexible</span>
+                      </div>
+                      <span class="nexus-qa-arrow">→</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 2. EXPLORE AI MODELS & TOOLS SECTION (From Screenshot) -->
+          <section class="nexus-explore-section" id="nexus-explore-section">
+            <div class="nexus-explore-header-row">
+              <div class="nexus-explore-title-wrap">
+                <span class="nexus-explore-symbol">❖</span>
+                <h2 class="nexus-explore-title">Explore AI Models &amp; Tools</h2>
+              </div>
+
+              <!-- Filter Pills (All, Text, Image, Code, Audio, Video, More ->) -->
+              <div class="nexus-filter-pills" role="tablist" aria-label="Filter models and tools">
+                <button
+                  type="button"
+                  class="nexus-filter-pill active"
+                  data-filter="all"
+                  role="tab"
+                  aria-selected="true"
+                >
+                  All
+                </button>
+                <button
+                  type="button"
+                  class="nexus-filter-pill"
+                  data-filter="text"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Text
+                </button>
+                <button
+                  type="button"
+                  class="nexus-filter-pill"
+                  data-filter="image"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Image
+                </button>
+                <button
+                  type="button"
+                  class="nexus-filter-pill"
+                  data-filter="code"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Code
+                </button>
+                <button
+                  type="button"
+                  class="nexus-filter-pill"
+                  data-filter="audio"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Audio
+                </button>
+                <button
+                  type="button"
+                  class="nexus-filter-pill"
+                  data-filter="video"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Video
+                </button>
+                <button
+                  type="button"
+                  class="nexus-filter-pill"
+                  data-filter="more"
+                  role="tab"
+                  aria-selected="false"
+                >
+                  More →
+                </button>
+              </div>
+            </div>
+
+            <!-- Grid of 5 3D Model Cards with Floating 3D Artwork (From Screenshot) -->
+            <div class="nexus-model-cards-grid" id="nexus-model-cards-grid">
+              <!-- Card 1: ChatGPT (3D Twisted Neon Blue Ribbon/Vortex) -->
+              <div
+                class="nexus-3d-card card-chatgpt"
+                data-category="text,code"
+                data-model="openai:gpt-4o"
+              >
+                <div class="card-glass-sheen"></div>
+                <div class="card-content-col">
+                  <div class="card-brand-tile icon-bg-green">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M9.205 8.658v-2.26c0-.19.072-.333.238-.428l4.543-2.616c.619-.357 1.356-.523 2.117-.523 2.854 0 4.662 2.212 4.662 4.566 0 .167 0 .357-.024.547l-4.71-2.759a.797.797 0 00-.856 0l-5.97 3.473zm10.609 8.8V12.06c0-.333-.143-.57-.429-.737l-5.97-3.473 1.95-1.118a.433.433 0 01.476 0l4.543 2.617c1.309.76 2.189 2.378 2.189 3.948 0 1.808-1.07 3.473-2.76 4.163zM7.802 12.703l-1.95-1.142c-.167-.095-.239-.238-.239-.428V5.899c0-2.545 1.95-4.472 4.591-4.472 1 0 1.927.333 2.712.928L8.23 5.067c-.285.166-.428.404-.428.737v6.898zM12 15.128l-2.795-1.57v-3.33L12 8.658l2.795 1.57v3.33L12 15.128zm1.796 7.23c-1 0-1.927-.332-2.712-.927l4.686-2.712c.285-.166.428-.404.428-.737v-6.898l1.974 1.142c.167.095.238.238.238.428v5.233c0 2.545-1.974 4.472-4.614 4.472zm-5.637-5.303l-4.544-2.617c-1.308-.761-2.188-2.378-2.188-3.948A4.482 4.482 0 014.21 6.327v5.423c0 .333.143.571.428.738l5.947 3.449-1.95 1.118a.432.432 0 01-.476 0zm-.262 3.9c-2.688 0-4.662-2.021-4.662-4.519 0-.19.024-.38.047-.57l4.686 2.71c.286.167.571.167.856 0l5.97-3.448v2.26c0 .19-.07.333-.237.428l-4.543 2.616c-.619.357-1.356.523-2.117.523zm5.899 2.83a5.947 5.947 0 005.827-4.756C22.287 18.339 24 15.84 24 13.296c0-1.665-.713-3.282-1.998-4.448.119-.5.19-.999.19-1.498 0-3.401-2.759-5.947-5.946-5.947-.642 0-1.26.095-1.88.31A5.962 5.962 0 0010.205 0a5.947 5.947 0 00-5.827 4.757C1.713 5.447 0 7.945 0 10.49c0 1.666.713 3.283 1.998 4.448-.119.5-.19 1-.19 1.499 0 3.401 2.759 5.946 5.946 5.946.642 0 1.26-.095 1.88-.309a5.96 5.96 0 004.162 1.713z"/>
+</svg>
+                  </div>
+                  <h3 class="card-model-name">ChatGPT</h3>
+                  <p class="card-model-desc">Powerful conversations, creative writing, and more.</p>
+                  <div class="card-tags-row">
+                    <span class="card-tag">Text</span>
+                    <span class="card-tag">Chat</span>
+                  </div>
+                </div>
+                <!-- 3D Graphic Artwork: Floating Blue Spiral Vortex -->
+                <div class="card-3d-art-col art-chatgpt-vortex">
+                  <div class="vortex-layer layer-1"></div>
+                  <div class="vortex-layer layer-2"></div>
+                  <div class="vortex-layer layer-3"></div>
+                </div>
+                <button type="button" class="card-action-circle-btn" aria-label="Use ChatGPT">
+                  <span class="circle-arrow">→</span>
+                </button>
+              </div>
+
+              <!-- Card 2: Gemini (3D Translucent Glowing Star Crystals) -->
+              <div
+                class="nexus-3d-card card-gemini"
+                data-category="text,image,code"
+                data-model="gemini:gemini-2.0-flash"
+              >
+                <div class="card-glass-sheen"></div>
+                <div class="card-content-col">
+                  <div class="card-brand-tile icon-bg-blue">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z"/>
+</svg>
+                  </div>
+                  <h3 class="card-model-name">Gemini</h3>
+                  <p class="card-model-desc">Google's most capable multimodal model.</p>
+                  <div class="card-tags-row">
+                    <span class="card-tag">Text</span>
+                    <span class="card-tag">Image</span>
+                  </div>
+                </div>
+                <!-- 3D Graphic Artwork: Glowing Faceted Crystals -->
+                <div class="card-3d-art-col art-gemini-crystals">
+                  <div class="crystal-star star-main">✦</div>
+                  <div class="crystal-star star-mini-1">✦</div>
+                  <div class="crystal-star star-mini-2">✦</div>
+                  <div class="crystal-glow-aura"></div>
+                </div>
+                <button type="button" class="card-action-circle-btn" aria-label="Use Gemini">
+                  <span class="circle-arrow">→</span>
+                </button>
+              </div>
+
+              <!-- Card 3: Claude (3D Radiant Geometric Origami Sculpture) -->
+              <div
+                class="nexus-3d-card card-claude"
+                data-category="text,code"
+                data-model="anthropic:claude-3-5-sonnet"
+              >
+                <div class="card-glass-sheen"></div>
+                <div class="card-content-col">
+                  <div class="card-brand-tile icon-bg-orange">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M4.709 15.955l4.72-2.647.08-.23-.08-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z"/>
+</svg>
+                  </div>
+                  <h3 class="card-model-name">Claude</h3>
+                  <p class="card-model-desc">Thoughtful, safe, and highly capable.</p>
+                  <div class="card-tags-row">
+                    <span class="card-tag">Text</span>
+                    <span class="card-tag">Analysis</span>
+                  </div>
+                </div>
+                <!-- 3D Graphic Artwork: Radiant Orange Origami Flower -->
+                <div class="card-3d-art-col art-claude-origami">
+                  <div class="origami-petal petal-1"></div>
+                  <div class="origami-petal petal-2"></div>
+                  <div class="origami-petal petal-3"></div>
+                  <div class="origami-petal petal-4"></div>
+                  <div class="origami-center"></div>
+                </div>
+                <button type="button" class="card-action-circle-btn" aria-label="Use Claude">
+                  <span class="circle-arrow">→</span>
+                </button>
+              </div>
+
+              <!-- Card 4: DALL·E 3 (3D Holographic Photo Frame) -->
+              <div class="nexus-3d-card card-dalle" data-category="image" data-model="dalle-3">
+                <div class="card-glass-sheen"></div>
+                <div class="card-content-col">
+                  <div class="card-brand-tile icon-bg-cyan">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M0 10h4.8v5H0z" opacity=".18"></path><path d="M4.8 10h4.8v5H4.8z" opacity=".35"></path><path d="M9.6 10h4.8v5H9.6z" opacity=".55"></path><path d="M14.4 10h4.8v5h-4.8z" opacity=".75"></path><path d="M19.2 10H24v5h-4.8z" opacity="1"></path>
+</svg>
+                  </div>
+                  <h3 class="card-model-name">DALL·E 3</h3>
+                  <p class="card-model-desc">Turn your ideas into stunning images.</p>
+                  <div class="card-tags-row">
+                    <span class="card-tag">Image</span>
+                    <span class="card-tag">Design</span>
+                  </div>
+                </div>
+                <!-- 3D Graphic Artwork: Holographic Picture Frame with Sunrise Mountains -->
+                <div class="card-3d-art-col art-dalle-frame">
+                  <div class="holo-frame-border">
+                    <div class="holo-frame-art">
+                      <div class="holo-sun"></div>
+                      <div class="holo-mountain mtn-back"></div>
+                      <div class="holo-mountain mtn-front"></div>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="card-action-circle-btn" aria-label="Use DALL-E 3">
+                  <span class="circle-arrow">→</span>
+                </button>
+              </div>
+
+              <!-- Card 5: Midjourney (3D Origami Sailboat on Neon Sea) -->
+              <div
+                class="nexus-3d-card card-midjourney"
+                data-category="image"
+                data-model="midjourney"
+              >
+                <div class="card-glass-sheen"></div>
+                <div class="card-content-col">
+                  <div class="card-brand-tile icon-bg-navy">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M22.369 17.676c-1.387 1.259-3.17 2.378-5.332 3.417.044.03.086.057.13.083l.018.01.019.012c.216.123.42.184.641.184.222 0 .426-.061.642-.184l.018-.011.019-.011c.14-.084.266-.178.492-.366l.178-.148c.279-.232.426-.342.625-.456.304-.174.612-.266.949-.266.337 0 .645.092.949.266l.023.014c.188.109.334.219.602.442l.178.148c.221.184.346.278.483.36l.028.017.018.01c.21.12.407.181.62.185h.022a.31.31 0 110 .618c-.337 0-.645-.092-.95-.266a3.137 3.137 0 01-.09-.054l-.022-.014-.022-.013-.02-.014a5.356 5.356 0 01-.49-.377l-.159-.132a3.836 3.836 0 00-.483-.36l-.027-.017-.019-.01a1.256 1.256 0 00-.641-.185c-.222 0-.426.061-.641.184l-.02.011-.018.011c-.14.084-.266.178-.492.366l-.158.132a5.125 5.125 0 01-.51.39l-.022.014-.022.014-.09.054a1.868 1.868 0 01-.95.266c-.337 0-.644-.092-.949-.266a3.137 3.137 0 01-.09-.054l-.022-.014-.022-.013-.026-.017a4.881 4.881 0 01-.425-.325.308.308 0 01-.12-.1l-.098-.081a3.836 3.836 0 00-.483-.36l-.027-.017-.019-.01a1.256 1.256 0 00-.641-.185c-.222 0-.426.061-.642.184l-.018.011-.019.011c-.14.084-.266.178-.492.366l-.158.132a5.125 5.125 0 01-.51.39l-.023.014-.022.014-.09.054A1.868 1.868 0 0112 22c-.337 0-.645-.092-.949-.266a3.137 3.137 0 01-.09-.054l-.022-.014-.022-.013-.021-.014a5.356 5.356 0 01-.49-.377l-.158-.132a3.836 3.836 0 00-.483-.36l-.028-.017-.018-.01a1.256 1.256 0 00-.642-.185c-.221 0-.425.061-.641.184l-.019.011-.018.011c-.141.084-.266.178-.492.366l-.158.132a5.125 5.125 0 01-.511.39l-.022.014-.022.014-.09.054a1.868 1.868 0 01-.986.264c-.746-.09-1.319-.38-1.89-.866l-.035-.03c-.047-.041-.118-.106-.192-.174l-.196-.181-.107-.1-.011-.01a1.531 1.531 0 00-.336-.253.313.313 0 00-.095-.03h-.005c-.119.022-.238.059-.361.11a.308.308 0 01-.077.061l-.008.005a.309.309 0 01-.126.034 5.66 5.66 0 00-.774.518l-.416.324-.055.043a6.542 6.542 0 01-.324.236c-.305.207-.552.315-.8.315a.31.31 0 01-.01-.618h.01c.09 0 .235-.062.438-.198l.04-.027c.077-.054.163-.117.27-.199l.385-.301.06-.047c.268-.206.506-.373.73-.505l-.633-1.21a.309.309 0 01.254-.451l20.287-1.305a.309.309 0 01.228.537zm-1.118.14L2.369 19.03l.423.809c.128-.045.256-.078.388-.1a.31.31 0 01.052-.005c.132 0 .26.032.386.093.153.073.294.179.483.35l.016.015.092.086.144.134.097.089c.065.06.125.114.16.144.485.418.948.658 1.554.736h.011a1.25 1.25 0 00.6-.172l.021-.011.019-.011.018-.011c.141-.084.266-.178.492-.366l.178-.148c.279-.232.426-.342.625-.456.305-.174.612-.266.95-.266.336 0 .644.092.948.266l.023.014c.188.109.335.219.603.442l.177.148c.222.184.346.278.484.36l.027.017.019.01c.215.124.42.185.641.185.222 0 .426-.061.641-.184l.019-.011.018-.011c.141-.084.267-.178.493-.366l.177-.148c.28-.232.427-.342.626-.456.304-.174.612-.266.949-.266.337 0 .644.092.949.266l.025.015c.187.109.334.22.603.443 1.867-.878 3.448-1.811 4.73-2.832l.02-.016zM3.653 2.026C6.073 3.06 8.69 4.941 10.8 7.258c2.46 2.7 4.109 5.828 4.637 9.149a.31.31 0 01-.421.335c-2.348-.945-4.54-1.258-6.59-1.02-1.739.2-3.337.792-4.816 1.703-.294.182-.62-.182-.405-.454 1.856-2.355 2.581-4.99 2.343-7.794-.195-2.292-1.031-4.61-2.284-6.709a.31.31 0 01.388-.442zM10.04 4.45c1.778.543 3.892 2.102 5.782 4.243 1.984 2.248 3.552 4.934 4.347 7.582a.31.31 0 01-.401.38l-.022-.01-.386-.154a10.594 10.594 0 00-.291-.112l-.016-.006c-.68-.247-1.199-.291-1.944-.101a.31.31 0 01-.375-.218C15.378 11.123 13.073 7.276 9.775 5c-.291-.201-.072-.653.266-.55zM4.273 2.996l.008.015c1.028 1.94 1.708 4.031 1.885 6.113.213 2.513-.31 4.906-1.673 7.092l-.02.031.003-.001c1.198-.581 2.47-.969 3.825-1.132l.055-.006c1.981-.23 4.083.029 6.309.837l.066.025-.007-.039c-.593-2.95-2.108-5.737-4.31-8.179l-.07-.078c-1.785-1.96-3.944-3.6-6.014-4.65l-.057-.028zm7.92 3.238l.048.048c2.237 2.295 3.885 5.431 4.974 9.191l.038.132.022-.004c.71-.133 1.284-.063 1.963.18l.027.01.066.024.046.018-.025-.073c-.811-2.307-2.208-4.62-3.936-6.594l-.058-.065c-1.02-1.155-2.103-2.132-3.15-2.856l-.015-.011z"/>
+</svg>
+                  </div>
+                  <h3 class="card-model-name">Midjourney</h3>
+                  <p class="card-model-desc">Create beautiful AI art from text.</p>
+                  <div class="card-tags-row">
+                    <span class="card-tag">Image</span>
+                    <span class="card-tag">Art</span>
+                  </div>
+                </div>
+                <!-- 3D Graphic Artwork: 3D Origami Sailboat on glowing neon ripples -->
+                <div class="card-3d-art-col art-midjourney-boat">
+                  <div class="origami-boat-hull"></div>
+                  <div class="origami-boat-sail sail-left"></div>
+                  <div class="origami-boat-sail sail-right"></div>
+                  <div class="boat-water-ripple ripple-1"></div>
+                  <div class="boat-water-ripple ripple-2"></div>
+                </div>
+                <button type="button" class="card-action-circle-btn" aria-label="Use Midjourney">
+                  <span class="circle-arrow">→</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. BOTTOM FEATURES STRIP & VALUE BANNER (From Screenshot) -->
+          <section class="nexus-bottom-strip">
+            <!-- 4 Value Pills in a row -->
+            <div class="nexus-feature-pills-row">
+              <div class="nexus-feat-pill">
+                <span class="feat-pill-icon">📦</span>
+                <div class="feat-pill-meta">
+                  <span class="feat-pill-title">No Installation</span>
+                  <span class="feat-pill-sub">Just open and use</span>
+                </div>
+              </div>
+
+              <div class="nexus-feat-pill">
+                <span class="feat-pill-icon">👥</span>
+                <div class="feat-pill-meta">
+                  <span class="feat-pill-title">Multiple Models</span>
+                  <span class="feat-pill-sub">From top AI providers</span>
+                </div>
+              </div>
+
+              <div class="nexus-feat-pill">
+                <span class="feat-pill-icon">⚡</span>
+                <div class="feat-pill-meta">
+                  <span class="feat-pill-title">Fast &amp; Reliable</span>
+                  <span class="feat-pill-sub">High performance</span>
+                </div>
+              </div>
+
+              <div class="nexus-feat-pill">
+                <span class="feat-pill-icon">🛡️</span>
+                <div class="feat-pill-meta">
+                  <span class="feat-pill-title">Secure &amp; Private</span>
+                  <span class="feat-pill-sub">Your data is safe</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Collaborative AI Banner -->
+            <div class="nexus-promo-banner" id="nexus-promo-banner">
+              <div class="promo-stars-bg"></div>
+              <div class="promo-text-wrap">
+                <span class="promo-title">The future of AI is collaborative.</span>
+              </div>
+              <button
+                type="button"
+                class="promo-circle-btn"
+                id="btn-promo-launch"
+                aria-label="Explore collaborative AI"
+              >
+                →
+              </button>
+            </div>
+          </section>
+        </div>
+
+        <!-- =========================================================================
+             SECTION B: PRESERVED LOGIN PANEL (Styled sleekly with 1-click launch)
+             ========================================================================= -->
+        <section
+          id="login-panel"
+          class="login-panel modern-3d-panel"
+          hidden
+          aria-labelledby="login-heading"
+        >
+          <div class="welcome-orb-container">
+            <div class="welcome-orb-glow"></div>
+            <div class="welcome-orb-3d">
+              <span class="welcome-symbol">❖</span>
+            </div>
+            <div class="welcome-pill-badge">
+              <span class="sparkle-icon">✨</span> 100% Free · Real Frontier AI Engines
+            </div>
+          </div>
+
+          <p class="eyebrow">AUTONOMOUS AI INTELLIGENCE WORKSPACE</p>
+          <h1 id="login-heading" class="modern-heading">
+            Your local<br /><span class="gradient-text">AI workspace.</span>
+          </h1>
+          <p id="login-description" class="intro modern-intro">
+            Explore fast streaming chats with zero-cost AI models. Powered by GroqCloud LPU, Google
+            Gemini, and OpenRouter with full privacy and local safety fixtures.
+          </p>
+
+          <!-- Legal Consent Checkbox -->
+          <label class="legal-consent modern-consent-box">
+            <input id="accept-legal" type="checkbox" />
+            <span class="consent-label">
+              I have read the draft
+              <a href="/legal/terms.html" target="_blank" rel="noopener">Terms</a> and
+              <a href="/legal/privacy.html" target="_blank" rel="noopener">Privacy notice</a> for
+              this local test.
+              <span id="legal-version" class="legal-version-badge"></span>
+            </span>
+          </label>
+
+          <!-- 1-Click Launch Cards -->
+          <div class="signin-options modern-account-grid">
+            <div class="account-card card-alpha">
+              <div class="account-card-header">
+                <div class="account-avatar avatar-alpha">R</div>
+                <div class="account-details">
+                  <div class="account-name-row">
+                    <strong>Rifat (Admin)</strong>
+                    <span class="role-chip chip-gold">👑 Super Admin</span>
+                  </div>
+                  <span class="account-sub">Full Models, Key Vault &amp; Admin Panel</span>
+                </div>
+              </div>
+              <button
+                id="login-alpha"
+                class="primary modern-btn-3d btn-alpha"
+                type="button"
+                disabled
+              >
+                Launch Admin Alpha 🚀
+              </button>
+            </div>
+
+            <div class="account-card card-beta">
+              <div class="account-card-header">
+                <div class="account-avatar avatar-beta">BG</div>
+                <div class="account-details">
+                  <div class="account-name-row">
+                    <strong>Workspace User</strong>
+                    <span class="role-chip chip-blue">👤 Regular Member</span>
+                  </div>
+                  <span class="account-sub">Standard AI Chat &amp; Studio Suite</span>
+                </div>
+              </div>
+              <button
+                id="login-beta"
+                class="secondary modern-btn-3d btn-beta"
+                type="button"
+                disabled
+              >
+                Launch User Beta ✦
+              </button>
+            </div>
+          </div>
+
+          <button
+            id="google-signin"
+            class="secondary google-signin modern-google-btn"
+            type="button"
+            hidden
+            disabled
+          >
+            <span class="google-icon">G</span> Sign in with Google
+          </button>
+        </section>
+
+        <!-- =========================================================================
+             SECTION C: FULL AI CHAT WORKSPACE (Streaming, Model Picker, Tools)
+             ========================================================================= -->
+        <section id="chat-panel" class="chat-shell" hidden aria-label="Synthetic chat workspace">
+          <!-- Chat toolbar with Back to Dashboard button and model selector -->
+          <div class="chat-toolbar">
+            <div class="chat-title-group">
+              <button
+                type="button"
+                class="back-to-dashboard-btn"
+                id="btn-back-to-dashboard"
+                title="Return to 3D Dashboard"
+              >
+                ← Dashboard
+              </button>
+              <h1 id="conversation-title">New conversation</h1>
+              <p id="model-label" class="muted"></p>
+            </div>
+            <div class="chat-actions">
+              <div class="model-picker-wrapper" title="Choose AI Engine">
+                <span class="model-picker-icon">⚡</span>
+                <select
+                  id="chat-model-selector"
+                  class="model-picker-select"
+                  aria-label="Choose AI Model"
+                >
+                  <option value="auto">Auto (Smart Free Engine)</option>
+                  <optgroup label="🌟 Google Gemini (Free Tier)">
+                    <option value="gemini:gemini-2.0-flash">Gemini 2.0 Flash</option>
+                    <option value="gemini:gemini-1.5-flash">Gemini 1.5 Flash</option>
+                  </optgroup>
+                  <optgroup label="⚡ GroqCloud LPU (Free &amp; Ultra-Fast)">
+                    <option value="groq:qwen/qwen3.8-27b">Groq · Qwen 3.8 27B</option>
+                    <option value="groq:openai/gpt-oss-120b">Groq · GPT-OSS 120B</option>
+                    <option value="groq:openai/gpt-oss-20b">Groq · GPT-OSS 20B</option>
+                  </optgroup>
+                  <optgroup label="🌐 OpenRouter (Free Frontier Models)">
+                    <option value="openrouter:deepseek/deepseek-r1:free">DeepSeek R1 (Free)</option>
+                    <option value="openrouter:meta-llama/llama-3.3-70b-instruct:free">
+                      Llama 3.3 70B (Free)
+                    </option>
+                    <option value="openrouter:google/gemini-2.0-flash-exp:free">
+                      Gemini 2.0 Flash Exp (Free)
+                    </option>
+                  </optgroup>
+                  <optgroup label="👑 Frontier Models (Admin Pool / BYOK)">
+                    <option value="anthropic:claude-3-5-sonnet">Claude 3.5 Sonnet</option>
+                    <option value="openai:gpt-4o">GPT-4o (Astra)</option>
+                  </optgroup>
+                </select>
+              </div>
+              <button id="rename-chat" class="secondary" type="button" disabled>Rename</button>
+              <button id="delete-chat" class="secondary" type="button" disabled>Delete chat</button>
+            </div>
+          </div>
+
+          <!-- Account & Usage Disclosure Details -->
+          <details class="account-panel">
+            <summary>Account &amp; usage</summary>
+            <p id="account-details"></p>
+            <p id="usage-details"></p>
+            <p id="abuse-details" hidden></p>
+            <p class="muted">Token counts are synthetic estimates.</p>
+            <button id="delete-account" class="danger" type="button">
+              Delete local test account data
+            </button>
+          </details>
+
+          <!-- Studio Toolbar (Toggled via Studio Mode) -->
+          <div id="studio-toolbar" class="studio-toolbar" aria-label="AI Creation Studio Tools">
+            <div class="studio-scroll">
+              <button type="button" class="studio-pill" data-template="email">
+                <span class="studio-icon">✉️</span>
+                <span class="studio-label">Email Generator</span>
+              </button>
+              <button type="button" class="studio-pill" data-template="resume">
+                <span class="studio-icon">📄</span>
+                <span class="studio-label">CV &amp; Resume</span>
+              </button>
+              <button type="button" class="studio-pill" data-template="proposal">
+                <span class="studio-icon">💼</span>
+                <span class="studio-label">Business Proposal</span>
+              </button>
+              <button type="button" class="studio-pill" data-template="presentation">
+                <span class="studio-icon">📽️</span>
+                <span class="studio-label">Presentation Deck</span>
+              </button>
+              <button type="button" class="studio-pill studio-pill-accent" id="btn-csv-tool">
+                <span class="studio-icon">📊</span>
+                <span class="studio-label">CSV Data Analysis</span>
+              </button>
+              <button type="button" class="studio-pill studio-pill-accent" id="btn-doc-tool">
+                <span class="studio-icon">📑</span>
+                <span class="studio-label">Document Q&amp;A</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Empty State Hero -->
+          <div id="welcome" class="welcome chatgpt-welcome">
+            <h1 class="chatgpt-hero-title">Where should we begin?</h1>
+            <div class="chatgpt-suggestions-list" aria-label="Quick task suggestions">
+              <button
+                type="button"
+                class="suggestion-row studio-pill"
+                data-template="contentCreation"
+              >
+                <span class="suggestion-icon">🖼️</span>
+                <span class="suggestion-text">Create an image or sticker</span>
+              </button>
+              <button type="button" class="suggestion-row studio-pill" data-template="email">
+                <span class="suggestion-icon">✏️</span>
+                <span class="suggestion-text">Write or edit</span>
+              </button>
+              <button type="button" class="suggestion-row" id="starter-web-btn">
+                <span class="suggestion-icon">🌐</span>
+                <span class="suggestion-text">Search the web</span>
+              </button>
+              <button type="button" class="suggestion-row studio-pill" data-template="resume">
+                <span class="suggestion-icon">📄</span>
+                <span class="suggestion-text">Build a CV or resume</span>
+              </button>
+              <button type="button" class="suggestion-row" id="starter-csv-btn">
+                <span class="suggestion-icon">📊</span>
+                <span class="suggestion-text">Analyze CSV dataset</span>
+              </button>
+            </div>
+            <div id="examples" class="examples" aria-label="Synthetic example prompts"></div>
+          </div>
+
+          <!-- Messages Stream -->
+          <div
+            id="messages"
+            class="messages"
+            role="log"
+            aria-label="Conversation messages"
+            aria-live="polite"
+            aria-relevant="additions"
+          ></div>
+
+          <!-- Capsule Composer Bar -->
+          <div class="composer-wrap">
+            <div id="attached-file-badge" class="attached-file-badge" hidden>
+              <span class="file-icon">📎</span>
+              <span id="attached-file-name" class="file-name"></span>
+              <span id="attached-file-info" class="file-info"></span>
+              <button
+                id="remove-file-btn"
+                type="button"
+                class="file-remove-btn"
+                title="Remove attachment"
+              >
+                ✕
+              </button>
+            </div>
+
+            <form id="composer" class="composer chatgpt-composer-capsule">
+              <label for="message">Synthetic test message</label>
+              <div class="composer-capsule-row">
+                <!-- Attach file button -->
+                <button
+                  id="attach-file"
+                  class="capsule-plus-btn"
+                  type="button"
+                  title="Attach file (PDF, TXT, CSV)"
+                  aria-label="Attach file"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </button>
+                <input id="file-input" type="file" accept=".pdf,.txt,.csv" hidden />
+
+                <!-- Textarea -->
+                <textarea
+                  id="message"
+                  rows="1"
+                  disabled
+                  placeholder="Ask ChatGPT or any AI Model..."
+                ></textarea>
+
+                <!-- Right Controls: Think, Mic, Send -->
+                <div class="composer-right-controls">
+                  <button
+                    type="button"
+                    class="think-pill-btn"
+                    id="btn-think"
+                    title="Deep reasoning mode"
+                  >
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <circle cx="12" cy="12" r="3"></circle>
+                      <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                      ></path>
+                    </svg>
+                    <span>Think</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="mic-icon-btn"
+                    id="btn-mic"
+                    title="Voice dictation"
+                    aria-label="Voice input"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                      <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                      <line x1="12" y1="19" x2="12" y2="23"></line>
+                      <line x1="8" y1="23" x2="16" y2="23"></line>
+                    </svg>
+                  </button>
+
+                  <span id="counter" class="counter"></span>
+
+                  <button
+                    id="send"
+                    class="blue-circle-action-btn"
+                    type="submit"
+                    disabled
+                    title="Send message"
+                    aria-label="Send message"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 3l7 7h-4v11h-6V10H5l7-7z"></path>
+                    </svg>
+                  </button>
+                  <button id="stop" class="secondary stop-btn" type="button" hidden>Stop</button>
+                </div>
+              </div>
+            </form>
+            <p class="privacy-note">
+              Encrypted on loopback · Universal Free AI Pool · Zero spend guarantee
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- =========================================================================
+         INTERACTIVE MODALS & DRAWERS (Fulfilling all user requirements)
+         ========================================================================= -->
+
+    <!-- 1. Search Command Palette Modal (Opens via Search Bar or "/" or "Ctrl+K") -->
+    <dialog
+      id="nexus-search-dialog"
+      class="nexus-search-dialog"
+      closedby="any"
+      aria-labelledby="search-dialog-title"
+    >
+      <div class="search-modal-content">
+        <header class="search-modal-header">
+          <svg
+            class="search-modal-icon"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="text"
+            id="search-palette-input"
+            class="search-palette-input"
+            placeholder="Type to search models, tools, or chats..."
+            autocomplete="off"
+            id="search-dialog-title"
+          />
+          <button
+            type="button"
+            id="search-palette-close"
+            class="dialog-close-btn"
+            aria-label="Close search"
+          >
+            ✕
+          </button>
+        </header>
+
+        <div class="search-palette-results" id="search-palette-results">
+          <!-- Dynamically populated search items -->
+        </div>
+
+        <footer class="search-palette-footer">
+          <span class="search-hint"><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
+          <span class="search-hint"><kbd>Enter</kbd> Select</span>
+          <span class="search-hint"><kbd>Esc</kbd> Close</span>
+        </footer>
+      </div>
+    </dialog>
+
+    <!-- 2. History Drawer Dialog (Opens via "History" in Sidebar) -->
+    <dialog
+      id="nexus-history-dialog"
+      class="nexus-drawer-dialog"
+      closedby="any"
+      aria-labelledby="history-dialog-title"
+    >
+      <div class="drawer-modal-content">
+        <header class="dialog-header">
+          <div>
+            <h2 id="history-dialog-title">🕒 Conversation History</h2>
+            <p class="muted">Browse, resume, rename, or manage all saved conversations.</p>
+          </div>
+          <button
+            type="button"
+            id="history-dialog-close"
+            class="dialog-close-btn"
+            aria-label="Close history"
+          >
+            ✕
+          </button>
+        </header>
+
+        <div class="history-search-bar">
+          <input
+            type="text"
+            id="history-filter-input"
+            placeholder="Filter conversations by title..."
+          />
+        </div>
+
+        <div class="history-dialog-list" id="history-dialog-list">
+          <!-- Dynamically populated history rows -->
+        </div>
+
+        <footer class="dialog-actions">
+          <button id="history-close-btn" class="secondary" type="button">Close</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <!-- 3. Tools Studio Dialog (Opens via "Tools" in Sidebar) -->
+    <dialog
+      id="nexus-tools-dialog"
+      class="nexus-tools-dialog"
+      closedby="any"
+      aria-labelledby="tools-dialog-title"
+    >
+      <div class="tools-modal-content">
+        <header class="dialog-header">
+          <div>
+            <h2 id="tools-dialog-title">🧰 AI Studio &amp; Productivity Tools</h2>
+            <p class="muted">
+              Instant frontier AI creation workflows designed for speed and precision.
+            </p>
+          </div>
+          <button
+            type="button"
+            id="tools-dialog-close"
+            class="dialog-close-btn"
+            aria-label="Close tools"
+          >
+            ✕
+          </button>
+        </header>
+
+        <div class="nexus-tools-grid">
+          <button type="button" class="nexus-tool-card" data-launch="presentation">
+            <span class="tool-card-icon">📽️</span>
+            <div class="tool-card-info">
+              <span class="tool-card-title">Presentation Deck</span>
+              <span class="tool-card-desc"
+                >Generate professional slides &amp; bullet-pointed decks</span
+              >
+            </div>
+            <span class="tool-launch-arrow">→</span>
+          </button>
+
+          <button type="button" class="nexus-tool-card" data-launch="resume">
+            <span class="tool-card-icon">📄</span>
+            <div class="tool-card-info">
+              <span class="tool-card-title">CV &amp; Resume Builder</span>
+              <span class="tool-card-desc">Create ATS-optimized executive resumes</span>
+            </div>
+            <span class="tool-launch-arrow">→</span>
+          </button>
+
+          <button type="button" class="nexus-tool-card" data-launch="csv">
+            <span class="tool-card-icon">📊</span>
+            <div class="tool-card-info">
+              <span class="tool-card-title">CSV Data Insights</span>
+              <span class="tool-card-desc"
+                >Upload datasets, view stats, and query with natural language</span
+              >
+            </div>
+            <span class="tool-launch-arrow">→</span>
+          </button>
+
+          <button type="button" class="nexus-tool-card" data-launch="email">
+            <span class="tool-card-icon">✉️</span>
+            <div class="tool-card-info">
+              <span class="tool-card-title">Email &amp; Proposals</span>
+              <span class="tool-card-desc">Draft high-converting client proposals and emails</span>
+            </div>
+            <span class="tool-launch-arrow">→</span>
+          </button>
+
+          <button type="button" class="nexus-tool-card" data-launch="image">
+            <span class="tool-card-icon">🖼️</span>
+            <div class="tool-card-info">
+              <span class="tool-card-title">Visual Art &amp; Image Studio</span>
+              <span class="tool-card-desc"
+                >Design stickers, 3D renders, and digital art with prompts</span
+              >
+            </div>
+            <span class="tool-launch-arrow">→</span>
+          </button>
+
+          <button type="button" class="nexus-tool-card" data-launch="doc">
+            <span class="tool-card-icon">📑</span>
+            <div class="tool-card-info">
+              <span class="tool-card-title">Document Q&amp;A</span>
+              <span class="tool-card-desc">Attach PDF/TXT files and ask complex questions</span>
+            </div>
+            <span class="tool-launch-arrow">→</span>
+          </button>
+        </div>
+
+        <footer class="dialog-actions">
+          <button id="tools-close-btn" class="secondary" type="button">Close</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <!-- 4. Upgrade & Quota Dialog (Opens via "Upgrade Now" or Plan Info) -->
+    <dialog
+      id="nexus-upgrade-dialog"
+      class="nexus-upgrade-dialog"
+      closedby="any"
+      aria-labelledby="upgrade-dialog-title"
+    >
+      <div class="upgrade-modal-content">
+        <header class="dialog-header">
+          <div>
+            <h2 id="upgrade-dialog-title">⚡ AI Nexus Power &amp; Capacity</h2>
+            <p class="muted">Zero cost. Zero subscriptions. Frontier AI access for everyone.</p>
+          </div>
+          <button
+            type="button"
+            id="upgrade-dialog-close"
+            class="dialog-close-btn"
+            aria-label="Close upgrade"
+          >
+            ✕
+          </button>
+        </header>
+
+        <div class="upgrade-features-list">
+          <div class="upgrade-tier-box tier-free">
+            <div class="tier-badge">CURRENT PLAN</div>
+            <h3>Free Plan (Unlimited Tier)</h3>
+            <div class="tier-tokens-callout">
+              <span class="tier-tokens-val">1.94M Tokens</span>
+              <span class="tier-tokens-sub">Universal Shared Pool Active</span>
+            </div>
+            <ul class="tier-perks">
+              <li>✓ All Frontier AI Models (Gemini 2.0 Flash, Groq Qwen, DeepSeek R1, Llama 3)</li>
+              <li>✓ 1,800+ tokens/sec ultra-fast inference via GroqCloud LPU</li>
+              <li>✓ CSV Data Analysis &amp; Natural Language Queries</li>
+              <li>✓ Full Privacy: Local storage and encrypted loopback</li>
+              <li>✓ Multi-Key Rotation with zero downtime</li>
+            </ul>
+          </div>
+        </div>
+
+        <footer class="dialog-actions">
+          <button id="upgrade-close-btn" class="primary" type="button">Awesome, Got it!</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <!-- 5. Notifications Popover -->
+    <div id="nexus-notifications-popover" class="nexus-popover" hidden>
+      <div class="popover-header">
+        <h4>Notifications</h4>
+        <span class="popover-badge">Active</span>
+      </div>
+      <div class="popover-list">
+        <div class="popover-item">
+          <span class="popover-item-icon">🟢</span>
+          <div class="popover-item-meta">
+            <strong>Universal Free AI Pool Connected</strong>
+            <small
+              >GitHub Models, GroqCloud, and Google Gemini are ready for instant inference.</small
+            >
+          </div>
+        </div>
+        <div class="popover-item">
+          <span class="popover-item-icon">⚡</span>
+          <div class="popover-item-meta">
+            <strong>GroqCloud 1,800+ Tokens/sec</strong>
+            <small>Ultra-fast LPU inference is active with sub-second response times.</small>
+          </div>
+        </div>
+        <div class="popover-item">
+          <span class="popover-item-icon">🛡️</span>
+          <div class="popover-item-meta">
+            <strong>Zero Spend Guarantee</strong>
+            <small>All requests run entirely on free-tier quotas and local privacy fixtures.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. User Profile Popover -->
+    <div id="nexus-profile-popover" class="nexus-popover" hidden>
+      <div class="profile-popover-header">
+        <div class="profile-popover-avatar">R</div>
+        <div class="profile-popover-meta">
+          <strong id="popover-username">Rifat</strong>
+          <small>Free Plan · Unlimited Local Tier</small>
+        </div>
+      </div>
+      <div class="profile-popover-actions">
+        <button type="button" class="popover-action-btn" id="btn-popover-settings">
+          ⚙️ Settings &amp; API Key Vault
+        </button>
+        <button type="button" class="popover-action-btn" id="btn-popover-history">
+          🕒 Conversation History
+        </button>
+        <button type="button" class="popover-action-btn danger-text" id="btn-popover-logout">
+          🚪 Sign Out
+        </button>
+      </div>
+    </div>
+
+    <!-- Preserved Rename Conversation Dialog -->
+    <dialog id="action-dialog" aria-labelledby="dialog-title">
+      <form id="dialog-form">
+        <h2 id="dialog-title"></h2>
+        <p id="dialog-description"></p>
+        <label id="title-label" for="title-input">Conversation title</label>
+        <input id="title-input" type="text" maxlength="120" />
+        <div class="dialog-actions">
+          <button id="dialog-cancel" class="secondary" type="button">Cancel</button>
+          <button id="dialog-confirm" class="primary" type="submit">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Preserved Productivity Studio Modal Dialog -->
+    <dialog id="studio-dialog" class="studio-dialog" aria-labelledby="studio-dialog-title">
+      <form id="studio-dialog-form" method="dialog">
+        <header class="dialog-header">
+          <div>
+            <h2 id="studio-dialog-title"></h2>
+            <p id="studio-dialog-desc" class="muted"></p>
+          </div>
+          <button
+            type="button"
+            id="studio-dialog-close"
+            class="dialog-close-btn"
+            aria-label="Close dialog"
+          >
+            ✕
+          </button>
+        </header>
+        <div id="studio-dialog-fields" class="studio-dialog-fields"></div>
+        <footer class="dialog-actions">
+          <button id="studio-dialog-cancel" class="secondary" type="button">Cancel</button>
+          <button id="studio-generate" class="primary" type="submit">✨ Generate with AI</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <!-- Preserved CSV Data Analysis Modal Dialog -->
+    <dialog id="csv-dialog" class="csv-dialog" aria-labelledby="csv-dialog-title">
+      <div class="csv-modal-content">
+        <header class="dialog-header">
+          <div>
+            <h2 id="csv-dialog-title">📊 CSV Data Analysis &amp; Query</h2>
+            <p id="csv-dialog-desc" class="muted">
+              Instant dataset statistics and natural-language query.
+            </p>
+          </div>
+          <button
+            type="button"
+            id="csv-dialog-close"
+            class="dialog-close-btn"
+            aria-label="Close dialog"
+          >
+            ✕
+          </button>
+        </header>
+        <div class="csv-stats-grid">
+          <div class="csv-stat-box">
+            <span class="csv-stat-label">Total Rows</span
+            ><span id="csv-stat-rows" class="csv-stat-val">0</span>
+          </div>
+          <div class="csv-stat-box">
+            <span class="csv-stat-label">Total Columns</span
+            ><span id="csv-stat-cols" class="csv-stat-val">0</span>
+          </div>
+          <div class="csv-stat-box">
+            <span class="csv-stat-label">Numeric Fields</span
+            ><span id="csv-stat-numeric" class="csv-stat-val">0</span>
+          </div>
+          <div class="csv-stat-box">
+            <span class="csv-stat-label">Categorical Fields</span
+            ><span id="csv-stat-categorical" class="csv-stat-val">0</span>
+          </div>
+        </div>
+        <div class="csv-preview-wrap">
+          <h3 class="csv-preview-heading">Dataset Preview (Top Rows)</h3>
+          <div id="csv-preview-container" class="csv-preview-container"></div>
+        </div>
+        <div class="csv-query-section">
+          <h3 class="csv-preview-heading">Ask a Question in Natural Language</h3>
+          <div class="csv-query-bar">
+            <input
+              type="text"
+              id="csv-query-input"
+              placeholder="e.g. What is the average salary? or Which department has the most staff?"
+            />
+            <button type="button" id="csv-query-send" class="primary">Ask</button>
+          </div>
+          <div id="csv-query-results" class="csv-query-results"></div>
+        </div>
+        <footer class="dialog-actions">
+          <button id="csv-close" class="secondary" type="button">Close</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <!-- Preserved AI Multi-Key Management & Rotation Modal Dialog -->
+    <dialog id="key-pool-dialog" class="key-pool-dialog" aria-labelledby="key-pool-dialog-title">
+      <div class="key-pool-modal-content">
+        <header class="dialog-header">
+          <div>
+            <h2 id="key-pool-dialog-title">🔑 AI API Key Vault &amp; Multi-Key Rotation</h2>
+            <p id="key-pool-dialog-desc" class="muted">
+              Add multiple free API keys with automatic failover and zero downtime.
+            </p>
+          </div>
+          <button
+            type="button"
+            id="key-pool-dialog-close"
+            class="dialog-close-btn"
+            aria-label="Close dialog"
+          >
+            ✕
+          </button>
+        </header>
+
+        <form id="key-pool-form" class="key-pool-form">
+          <div class="key-form-grid">
+            <div class="form-group">
+              <label for="key-provider">Provider</label>
+              <select id="key-provider" required>
+                <option value="groq">GroqCloud (Free Ultra-Fast Llama 3.3 70B)</option>
+                <option value="gemini">Google Gemini (Free Gemini 1.5/2.0 Flash)</option>
+                <option value="openrouter">OpenRouter (Free DeepSeek, Llama 3.3, Gemini)</option>
+                <option value="deepseek">DeepSeek (DeepSeek V3 / R1)</option>
+                <option value="mistral">Mistral AI (Codestral, Mistral Large)</option>
+                <option value="cerebras">Cerebras (Ultra-Fast 1800+ tokens/sec)</option>
+                <option value="github">GitHub Models (Free GPT-4o-mini / Llama 3.3)</option>
+                <option value="openai">OpenAI (GPT-4o, GPT-4o-mini)</option>
+                <option value="anthropic">Anthropic (Claude 3.5 Sonnet)</option>
+                <option value="custom">✍️ Custom Provider...</option>
+              </select>
+            </div>
+            <div class="form-group" id="key-custom-provider-group" hidden>
+              <label for="key-custom-name">Custom Provider Name</label>
+              <input
+                type="text"
+                id="key-custom-name"
+                placeholder="e.g. ollama, perplexity"
+                maxlength="50"
+              />
+            </div>
+            <div class="form-group">
+              <label for="key-label">Key Label / Name</label>
+              <input
+                type="text"
+                id="key-label"
+                placeholder="e.g. My Free Key #1"
+                required
+                maxlength="80"
+              />
+            </div>
+            <div class="form-group form-group-full">
+              <label for="key-value">API Key / Token</label>
+              <input
+                type="password"
+                id="key-value"
+                placeholder="Paste your key"
+                required
+                autocomplete="off"
+              />
+              <div id="key-detect-pill" class="key-detect-pill" hidden></div>
+              <div id="key-connect-status" class="key-connect-status" hidden></div>
+            </div>
+            <div class="form-group">
+              <label for="key-expiry">Expiration Date (Optional)</label>
+              <input type="date" id="key-expiry" />
+            </div>
+            <div class="form-group form-actions-inline">
+              <button
+                type="button"
+                id="btn-test-key"
+                class="secondary"
+                title="Test live connection"
+              >
+                ⚡ Test Connection
+              </button>
+              <button type="submit" id="save-key-btn" class="primary">+ Add Key to Pool</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="key-pool-table-wrap">
+          <div class="key-pool-header-row">
+            <h3 class="key-pool-section-heading">Key Pool &amp; Load Balancer Status</h3>
+            <button
+              type="button"
+              id="refresh-keys-btn"
+              class="secondary icon-btn-small"
+              title="Refresh key list"
+            >
+              🔄 Refresh
+            </button>
+          </div>
+          <div class="key-table-responsive">
+            <table class="key-pool-table" id="key-pool-table">
+              <thead>
+                <tr>
+                  <th>Provider</th>
+                  <th>Label</th>
+                  <th>Masked Token</th>
+                  <th>Usage</th>
+                  <th>Expires</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="key-pool-tbody"></tbody>
+            </table>
+            <p id="key-pool-empty" class="muted key-pool-empty-hint">
+              No keys saved in the database pool yet. Fallback environment keys (.env) are currently
+              active.
+            </p>
+          </div>
+        </div>
+
+        <footer class="dialog-actions">
+          <button id="key-pool-close" class="secondary" type="button">Close</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

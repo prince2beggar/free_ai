@@ -1,0 +1,83 @@
+{
+  "syntheticOnly": true,
+  "description": "Offline synthetic Governor counters; not an actual provider quota or capacity claim.",
+  "provider": {
+    "id": "governor-synthetic-provider",
+    "name": "Synthetic Governor demonstrator provider",
+    "adapterKind": "synthetic_mock",
+    "baseUrl": null,
+    "secretRef": null,
+    "termsUrl": "https://example.invalid/governor-synthetic-fixture",
+    "termsReviewedAt": "2026-01-01",
+    "dataPolicy": "synthetic_only",
+    "allowsMultiuser": true,
+    "ownerApproved": true,
+    "quotaConfirmed": true
+  },
+  "models": [
+    {
+      "id": "governor-synthetic-model-a",
+      "externalName": "governor-synthetic-model-a",
+      "displayName": "Synthetic Governor model A"
+    },
+    {
+      "id": "governor-synthetic-model-b",
+      "externalName": "governor-synthetic-model-b",
+      "displayName": "Synthetic Governor model B"
+    }
+  ],
+  "modelMetadata": {
+    "capabilities": ["text"],
+    "contextLimit": 1000,
+    "contextVerified": true,
+    "modelClass": "synthetic",
+    "cuInputRate": "0",
+    "cuOutputRate": "0",
+    "ratesVerified": true,
+    "qualityKind": "synthetic_fixture",
+    "freeFlag": true
+  },
+  "accountRef": "governor-synthetic-shared-account",
+  "tokensPerRequest": "50",
+  "safetyFactor": "0.8",
+  "anchorAt": "2026-01-01T00:00:00.000Z",
+  "windows": [
+    { "id": "minute", "windowMs": 60000, "requests": "10", "tokens": "500" },
+    { "id": "day", "windowMs": 86400000, "requests": "1000", "tokens": "50000" }
+  ],
+  "pools": [
+    { "id": "governor-synthetic-provider-pool", "scope": "provider" },
+    { "id": "governor-synthetic-account-pool", "scope": "account" },
+    {
+      "id": "governor-synthetic-model-a-pool",
+      "scope": "model",
+      "modelId": "governor-synthetic-model-a"
+    },
+    {
+      "id": "governor-synthetic-model-b-pool",
+      "scope": "model",
+      "modelId": "governor-synthetic-model-b"
+    }
+  ],
+  "examples": [
+    {
+      "reservationId": "governor-example-reservation-a",
+      "requestId": "governor-example-request-a",
+      "modelId": "governor-synthetic-model-a",
+      "inputTokens": "20",
+      "outputTokens": "10",
+      "actualInputTokens": "15",
+      "actualOutputTokens": "5"
+    },
+    {
+      "reservationId": "governor-example-reservation-b",
+      "requestId": "governor-example-request-b",
+      "modelId": "governor-synthetic-model-b",
+      "inputTokens": "20",
+      "outputTokens": "10",
+      "actualInputTokens": "15",
+      "actualOutputTokens": "5"
+    }
+  ],
+  "fairShareIdempotencyKey": "governor-example-fair-share"
+}

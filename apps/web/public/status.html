@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta
+      name="description"
+      content="Live operational status, subsystem health, and incident history for Free AI Workspace."
+    />
+    <title>Free AI Workspace · System Status</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/phase1.css" />
+    <link rel="stylesheet" href="/status.css" />
+    <script type="module" src="/status.js"></script>
+  </head>
+  <body>
+    <div class="status-layout">
+      <header class="status-header">
+        <div class="status-header-inner">
+          <div class="status-brand">
+            <a class="brand" href="/" aria-label="Return to workspace"
+              >f<span>free ai<small>STATUS</small></span></a
+            >
+            <span class="status-env-badge" id="env-badge">Local Synthetic</span>
+          </div>
+          <div class="status-controls">
+            <div class="language-toggle" aria-label="Language selection">
+              <button type="button" id="lang-en" data-language="en" aria-pressed="true">
+                English
+              </button>
+              <button type="button" id="lang-bn" data-language="bn" aria-pressed="false" lang="bn">
+                বাংলা
+              </button>
+            </div>
+            <button
+              type="button"
+              id="refresh-status"
+              class="secondary refresh-btn"
+              aria-label="Refresh status"
+            >
+              <span class="refresh-icon" aria-hidden="true">↻</span>
+              <span id="refresh-label">Refresh</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="status-main" id="main-content">
+        <!-- Live Status Hero Banner -->
+        <section
+          id="status-banner"
+          class="status-banner banner-operational"
+          role="status"
+          aria-live="polite"
+          aria-labelledby="banner-heading"
+        >
+          <div class="banner-icon-wrap" aria-hidden="true">
+            <span class="banner-pulse"></span>
+            <span class="banner-symbol" id="banner-symbol">✓</span>
+          </div>
+          <div class="banner-content">
+            <h1 id="banner-heading" class="banner-title">All Systems Operational</h1>
+            <p id="banner-subtitle" class="banner-subtitle">
+              All core workspace services are functioning normally within local synthetic
+              parameters.
+            </p>
+          </div>
+          <div class="banner-meta">
+            <span id="last-updated-label" class="muted-label">Last checked</span>
+            <time id="last-updated-time" class="meta-time">Checking…</time>
+          </div>
+        </section>
+
+        <!-- Components Grid -->
+        <section class="status-section" aria-labelledby="components-heading">
+          <div class="section-header">
+            <h2 id="components-heading" class="section-title">System Components</h2>
+            <span class="section-subtitle" id="components-subtitle"
+              >Subsystem operational availability</span
+            >
+          </div>
+          <div class="components-grid" id="components-container" role="list">
+            <!-- Dynamically populated or fallback rendered -->
+            <article class="component-card" id="card-ai_router" role="listitem">
+              <div class="component-info">
+                <h3 class="component-name">AI Router & Gateway</h3>
+                <p class="component-desc">
+                  Synthetic model inference, policy evaluation, and failover routing
+                </p>
+              </div>
+              <div class="component-badge badge-operational" id="badge-ai_router">
+                <span class="badge-dot"></span>
+                <span class="badge-text">Operational</span>
+              </div>
+            </article>
+
+            <article class="component-card" id="card-file_processing" role="listitem">
+              <div class="component-info">
+                <h3 class="component-name">Document & File Processing</h3>
+                <p class="component-desc">
+                  Safe PDF, TXT, and CSV parsing, analysis, and sanitization
+                </p>
+              </div>
+              <div class="component-badge badge-operational" id="badge-file_processing">
+                <span class="badge-dot"></span>
+                <span class="badge-text">Operational</span>
+              </div>
+            </article>
+
+            <article class="component-card" id="card-database" role="listitem">
+              <div class="component-info">
+                <h3 class="component-name">Database & Relational Storage</h3>
+                <p class="component-desc">
+                  PostgreSQL transactional state, sessions, and encrypted storage metadata
+                </p>
+              </div>
+              <div class="component-badge badge-operational" id="badge-database">
+                <span class="badge-dot"></span>
+                <span class="badge-text">Operational</span>
+              </div>
+            </article>
+
+            <article class="component-card" id="card-backups_retention" role="listitem">
+              <div class="component-info">
+                <h3 class="component-name">Backups & Retention Lifecycle</h3>
+                <p class="component-desc">
+                  AES-256-GCM encrypted daily archives and automated retention purge
+                </p>
+              </div>
+              <div class="component-badge badge-operational" id="badge-backups_retention">
+                <span class="badge-dot"></span>
+                <span class="badge-text">Operational</span>
+              </div>
+            </article>
+
+            <article class="component-card" id="card-usage_ledger" role="listitem">
+              <div class="component-info">
+                <h3 class="component-name">Accounting & Signed Usage Ledger</h3>
+                <p class="component-desc">
+                  Cryptographically signed audit trail and capacity token governor
+                </p>
+              </div>
+              <div class="component-badge badge-operational" id="badge-usage_ledger">
+                <span class="badge-dot"></span>
+                <span class="badge-text">Operational</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- System Metrics Panel -->
+        <section class="status-section" aria-labelledby="metrics-heading">
+          <div class="section-header">
+            <h2 id="metrics-heading" class="section-title">Operational Telemetry</h2>
+            <span class="section-subtitle" id="metrics-subtitle">Uptime and safety parameters</span>
+          </div>
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <span class="metric-label" id="uptime-label">Platform Uptime</span>
+              <strong class="metric-value" id="metric-uptime">99.98%</strong>
+              <span class="metric-caption" id="uptime-caption">Synthetic daemon active</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label" id="providers-label">Active Providers</span>
+              <strong class="metric-value" id="metric-providers">1 Synthetic</strong>
+              <span class="metric-caption" id="providers-caption">No external traffic</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label" id="breakers-label">Circuit Breakers</span>
+              <strong class="metric-value" id="metric-breakers">0 Open</strong>
+              <span class="metric-caption" id="breakers-caption">All routes healthy</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-label" id="security-label">Data Protection</span>
+              <strong class="metric-value" id="metric-security">AES-256-GCM</strong>
+              <span class="metric-caption" id="security-caption">Encrypted at rest</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Incidents & Maintenance -->
+        <section class="status-section" aria-labelledby="incidents-heading">
+          <div class="section-header">
+            <h2 id="incidents-heading" class="section-title">Active Incidents</h2>
+            <span class="section-subtitle" id="incidents-subtitle"
+              >Real-time alerts and remediation updates</span
+            >
+          </div>
+          <div class="incidents-list" id="incidents-container">
+            <div class="empty-state" id="empty-incidents">
+              <span class="empty-icon" aria-hidden="true">✓</span>
+              <p class="empty-title" id="no-incidents-title">No Active Incidents</p>
+              <p class="empty-desc" id="no-incidents-desc">
+                All systems and providers are operating within normal operational parameters.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="status-section" aria-labelledby="maintenance-heading">
+          <div class="section-header">
+            <h2 id="maintenance-heading" class="section-title">Scheduled Maintenance</h2>
+            <span class="section-subtitle" id="maintenance-subtitle"
+              >Planned upgrades and service windows</span
+            >
+          </div>
+          <div class="maintenance-list" id="maintenance-container">
+            <div class="empty-state" id="empty-maintenance">
+              <span class="empty-icon" aria-hidden="true">📅</span>
+              <p class="empty-title" id="no-maintenance-title">No Scheduled Maintenance</p>
+              <p class="empty-desc" id="no-maintenance-desc">
+                There are no upcoming planned service interruptions at this time.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="status-footer">
+        <div class="status-footer-inner">
+          <div class="footer-info">
+            <p id="footer-note">
+              Synthetic test workspace status. External provider availability is reported
+              separately.
+            </p>
+            <p id="footer-disclaimer">Free models, quotas, and provider terms can change.</p>
+          </div>
+          <nav class="footer-nav" aria-label="Legal and workspace navigation">
+            <a href="/">← Local Workspace</a>
+            <a href="/legal/terms.html">Terms</a>
+            <a href="/legal/privacy.html">Privacy</a>
+            <a href="/legal/aup.html">AUP</a>
+            <a href="/legal/cookies.html">Cookies</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

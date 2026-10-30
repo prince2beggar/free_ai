@@ -1,0 +1,14 @@
+{
+  "allowedMimeTypes": ["application/pdf", "text/plain", "text/csv"],
+  "maxFileSizeBytes": 10485760,
+  "maxExtractedChars": 500000,
+  "defaultSectionTokenLimit": 1000,
+  "tokenEstimationFactor": 3.5,
+  "warningMessage": "Warning: Do not upload secrets, passwords, API keys, or highly sensitive personal data. Files are stored locally and text is extracted for synthetic/model processing.",
+  "csvDelimiters": [",", "\t", ";", "|"],
+  "retentionDays": 30,
+  "fileRetentionDays": 30,
+  "softDeleteGraceDays": 7,
+  "maxUserStorageBytes": 52428800,
+  "conversationRetentionDays": 30
+}

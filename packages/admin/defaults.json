@@ -1,0 +1,73 @@
+{
+  "sessionTtlSeconds": 900,
+  "totpStepSeconds": 30,
+  "totpWindow": 1,
+  "permissions": [
+    "provider:manage",
+    "model:manage",
+    "policy:manage",
+    "kill_switch:manage",
+    "user:moderate",
+    "user:read",
+    "staff:manage",
+    "role:manage",
+    "audit:read",
+    "config:rollback",
+    "alert:manage",
+    "alert:read",
+    "backup:manage",
+    "backup:restore"
+  ],
+  "systemRoles": [
+    {
+      "id": "super_admin",
+      "name": "Super Admin",
+      "description": "Full administrative control across all platform capabilities",
+      "permissions": [
+        "provider:manage",
+        "model:manage",
+        "policy:manage",
+        "kill_switch:manage",
+        "user:moderate",
+        "user:read",
+        "staff:manage",
+        "role:manage",
+        "audit:read",
+        "config:rollback",
+        "alert:manage",
+        "alert:read",
+        "backup:manage",
+        "backup:restore"
+      ]
+    },
+    {
+      "id": "operator",
+      "name": "Platform Operator",
+      "description": "Manages routing, providers, models, kill switches and rollback",
+      "permissions": [
+        "provider:manage",
+        "model:manage",
+        "policy:manage",
+        "kill_switch:manage",
+        "config:rollback",
+        "user:read",
+        "audit:read",
+        "alert:manage",
+        "alert:read"
+      ]
+    },
+    {
+      "id": "moderator",
+      "name": "Content & Abuse Moderator",
+      "description": "Inspects and moderates users, handles abuse alerts",
+      "permissions": ["user:moderate", "user:read", "audit:read", "alert:read"]
+    },
+    {
+      "id": "auditor",
+      "name": "Compliance Auditor",
+      "description": "Read-only access to audit trails and user compliance data",
+      "permissions": ["audit:read", "user:read", "alert:read"]
+    }
+  ],
+  "killSwitches": ["all_ai", "free_tier", "paid_routes", "signups", "file_uploads", "agent_mode"]
+}

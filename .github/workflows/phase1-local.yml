@@ -1,0 +1,48 @@
+name: Phase 1 local synthetic checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  local:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NODE_TLS_REJECT_UNAUTHORIZED: '1'
+      NODE_OPTIONS: --use-system-ca
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5; official ref verified 2026-10-13
+        with:
+          persist-credentials: false
+      - name: Scan working tree for secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          scan_dir=$(mktemp -d)
+          curl --fail --silent --show-error --location --proto '=https' --tlsv1.2 \
+            https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz \
+            --output "$scan_dir/gitleaks.tar.gz"
+          echo '551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  gitleaks.tar.gz' \
+            | (cd "$scan_dir" && sha256sum --check --strict)
+          tar --extract --gzip --file "$scan_dir/gitleaks.tar.gz" --directory "$scan_dir" gitleaks
+          "$scan_dir/gitleaks" dir . --config .gitleaks.toml --redact=100 --no-banner --no-color --ignore-gitleaks-allow --timeout 120
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5; official ref verified 2026-10-13
+        with:
+          node-version: '24.21.0'
+      - run: npm ci --include=dev --ignore-scripts --no-fund --no-audit
+      - run: npm audit --include=dev --audit-level=moderate
+      - run: npm run phase1:check
+      - run: npm run phase1:coverage
+      - run: npm run phase2:check
+      - run: npm run phase2:coverage
+      - run: npm run phase2:governor-coverage
+      - run: npm run phase2:router-coverage
+      - run: npm run phase2:abuse-coverage
+      - run: python3 -B -m unittest discover -s tests/unit -p 'test_*.py'
+      - run: node node_modules/playwright-core/cli.js install --with-deps chromium
+      - run: npm run phase1:browser
+      - run: npm run phase2:browser
+      - run: npm run phase2:router-browser
+      - run: npm run phase2:abuse-browser
+      - run: npm sbom --sbom-format=cyclonedx --include=dev > phase1-ci-sbom.json

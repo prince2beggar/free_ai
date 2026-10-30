@@ -1,0 +1,466 @@
+/* Status Page Modern Design Tokens and Components */
+:root {
+  --status-operational: #2e7d32;
+  --status-operational-bg: #e8f5e9;
+  --status-operational-border: #a5d6a7;
+
+  --status-degraded: #b26a00;
+  --status-degraded-bg: #fff8e1;
+  --status-degraded-border: #ffe082;
+
+  --status-outage: #c62828;
+  --status-outage-bg: #ffebee;
+  --status-outage-border: #ef9a9a;
+
+  --card-radius: 12px;
+  --transition-speed: 0.2s;
+}
+
+.status-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg, #f8f8f4);
+  color: var(--ink, #252d28);
+}
+
+.status-header {
+  background: #ffffff;
+  border-bottom: 1px solid var(--line, #dce2d5);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.status-header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.status-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-env-badge {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--soft, #eaf0e6);
+  color: var(--green, #355e43);
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line, #dce2d5);
+}
+
+.status-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.refresh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 8px;
+  border: 1px solid var(--line, #dce2d5);
+  background: #ffffff;
+  color: var(--ink, #252d28);
+  transition: all var(--transition-speed) ease;
+}
+
+.refresh-btn:hover {
+  background: var(--soft, #eaf0e6);
+  border-color: #527848;
+}
+
+.refresh-btn.spinning .refresh-icon {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.status-main {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  flex: 1;
+}
+
+/* Hero Status Banner */
+.status-banner {
+  border-radius: var(--card-radius);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid transparent;
+  transition: all var(--transition-speed) ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.banner-operational {
+  background: var(--status-operational-bg);
+  border-color: var(--status-operational-border);
+  color: #1b5e20;
+}
+
+.banner-degraded {
+  background: var(--status-degraded-bg);
+  border-color: var(--status-degraded-border);
+  color: #8c5200;
+}
+
+.banner-outage {
+  background: var(--status-outage-bg);
+  border-color: var(--status-outage-border);
+  color: #b71c1c;
+}
+
+.banner-icon-wrap {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.2;
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.banner-symbol {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: currentColor;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.banner-content {
+  flex: 1;
+}
+
+.banner-title {
+  margin: 0 0 4px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: inherit;
+}
+
+.banner-subtitle {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.45;
+}
+
+.banner-meta {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.muted-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+}
+
+.meta-time {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.4;
+  }
+}
+
+/* Sections */
+.status-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line, #dce2d5);
+  padding-bottom: 8px;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+  font-size: 13px;
+  color: var(--muted, #5b6655);
+}
+
+/* Components Grid */
+.components-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.component-card {
+  background: #ffffff;
+  border: 1px solid var(--line, #dce2d5);
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: all var(--transition-speed) ease;
+}
+
+.component-card:hover {
+  border-color: #b8c4af;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.component-info {
+  flex: 1;
+}
+
+.component-name {
+  margin: 0 0 2px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.component-desc {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted, #5b6655);
+}
+
+.component-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.badge-operational {
+  background: var(--status-operational-bg);
+  color: var(--status-operational);
+}
+
+.badge-degraded {
+  background: var(--status-degraded-bg);
+  color: var(--status-degraded);
+}
+
+.badge-outage {
+  background: var(--status-outage-bg);
+  color: var(--status-outage);
+}
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.metric-card {
+  background: #ffffff;
+  border: 1px solid var(--line, #dce2d5);
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted, #5b6655);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.metric-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink, #252d28);
+}
+
+.metric-caption {
+  font-size: 12px;
+  color: var(--muted, #5b6655);
+}
+
+/* Incidents & Empty States */
+.empty-state {
+  background: #ffffff;
+  border: 1px dashed var(--line, #dce2d5);
+  border-radius: 10px;
+  padding: 32px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.empty-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--soft, #eaf0e6);
+  color: var(--green, #355e43);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.empty-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.empty-desc {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted, #5b6655);
+  max-width: 480px;
+}
+
+/* Status Footer */
+.status-footer {
+  background: #ffffff;
+  border-top: 1px solid var(--line, #dce2d5);
+  padding: 24px;
+  margin-top: auto;
+}
+
+.status-footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-info p {
+  margin: 0 0 2px;
+  font-size: 12px;
+  color: var(--muted, #5b6655);
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+}
+
+.footer-nav a {
+  color: var(--green, #355e43);
+  text-decoration: none;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .status-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .status-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .banner-meta {
+    text-align: left;
+  }
+  .component-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .status-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

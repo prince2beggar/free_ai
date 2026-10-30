@@ -1,0 +1,7 @@
+{
+  "syntheticOnly": true,
+  "port": 4180,
+  "maintenanceIntervalMs": 60000,
+  "deviceCookieSeconds": 2592000,
+  "sessionTtlSeconds": 900
+}

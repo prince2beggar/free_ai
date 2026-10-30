@@ -1,0 +1,11 @@
+DROP TABLE abuse_events;
+DROP TABLE abuse_alerts;
+DROP TABLE abuse_moderation;
+DROP TABLE abuse_admissions;
+DROP TABLE abuse_challenges;
+DROP TABLE abuse_daily_token_counters;
+DROP TABLE abuse_counters;
+DROP TABLE abuse_sources;
+DROP TABLE abuse_profiles;
+DROP TABLE abuse_storage_guard;
+ALTER TABLE users DROP CONSTRAINT users_abuse_trust_range;

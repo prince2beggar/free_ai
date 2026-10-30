@@ -1,0 +1,31 @@
+{
+  "localOnly": true,
+  "safetyFactor": "0.8",
+  "reservationTtlMs": 30000,
+  "reconciliationMs": 60000,
+  "expectedActiveUsers": "100",
+  "trustTokenCaps": {
+    "0": "1000",
+    "1": "2000",
+    "2": "3000",
+    "3": "4000",
+    "4": "5000",
+    "5": "5000",
+    "6": "5000",
+    "7": "5000",
+    "8": "5000",
+    "9": "5000",
+    "10": "5000"
+  },
+  "maxPools": 100,
+  "maxRoutes": 500,
+  "maxLimitsPerPool": 16,
+  "maxCounters": 10000,
+  "maxReservations": 2000,
+  "maxAllocations": 100000,
+  "maxOperations": 20000,
+  "maxEvents": 20000,
+  "maxFairShareRows": 10000,
+  "maxJobUsers": 1000,
+  "staffRoles": ["owner", "super_admin", "admin"]
+}

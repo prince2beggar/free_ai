@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="description" content="A local synthetic preview of Free AI Workspace." />
+    <title>Free AI Workspace · Local preview</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/main.js"></script>
+  </head>
+  <body>
+    <div class="workspace">
+      <aside class="sidebar" aria-label="Workspace navigation">
+        <a class="brand" href="/" aria-label="Free AI Workspace"
+          ><span class="brand-mark">f<span>✳</span></span
+          ><span>free ai<span class="brand-sub">WORKSPACE</span></span></a
+        >
+        <button id="new-chat" class="new-chat" type="button">
+          <span>＋</span> New chat <span class="new-chat-arrow">↗</span>
+        </button>
+        <p class="section-label">YOUR SPACE</p>
+        <div class="nav-active"><span>◌</span> Chat <span class="nav-dot"></span></div>
+        <div class="sidebar-note">
+          <span class="note-icon">✦</span>
+          <p>A little space<br />for your big ideas.</p>
+          <span>Write. Learn. Find clarity.</span>
+        </div>
+        <div class="sidebar-footer">
+          <span class="status-dot"></span>
+          <div>Local preview<small>Synthetic data only</small></div>
+          <span class="footer-icon">⌘</span>
+        </div>
+      </aside>
+      <main>
+        <header class="topbar">
+          <div>
+            <span class="breadcrumb">Workspace</span><span class="breadcrumb-separator">/</span
+            ><strong>Chat</strong>
+          </div>
+          <span class="demo-badge"><span></span> Synthetic demo</span>
+        </header>
+        <section class="chat-shell" aria-label="Chat preview">
+          <div class="chat-toolbar">
+            <span class="sample-model"
+              >✳ <strong>Sample responses</strong
+              ><span class="model-note">Local preview</span></span
+            >
+            <div class="language-toggle" aria-label="Response language">
+              <button type="button" data-language="en" aria-pressed="true">English</button
+              ><button type="button" data-language="bn" aria-pressed="false" lang="bn">
+                বাংলা
+              </button>
+            </div>
+          </div>
+          <div class="conversation">
+            <div id="welcome" class="welcome">
+              <div class="welcome-symbol">✳</div>
+              <p class="eyebrow">A CLEARER PLACE TO BEGIN</p>
+              <h1>Make room<br />for your next idea.</h1>
+              <p class="welcome-description">
+                A small workspace for writing, learning, and finding clarity.<br />Try an example to
+                explore this synthetic preview.
+              </p>
+              <div id="examples" class="examples" aria-label="Synthetic example prompts"></div>
+              <p class="welcome-footnote">Thoughtfully simple. Available in English and বাংলা.</p>
+            </div>
+            <div
+              id="messages"
+              class="messages"
+              role="log"
+              aria-label="Demo conversation"
+              aria-live="polite"
+              aria-relevant="additions"
+            ></div>
+          </div>
+          <div class="composer-wrap">
+            <form id="composer" class="composer">
+              <label class="visually-hidden" for="message">Synthetic demo message</label
+              ><textarea
+                id="message"
+                rows="2"
+                disabled
+                placeholder="Try a synthetic demo message…"
+              ></textarea>
+              <div class="composer-bottom">
+                <span class="composer-hint">✦ <span>Synthetic messages only</span></span
+                ><span id="counter" class="counter"></span
+                ><button
+                  id="send"
+                  class="send"
+                  type="submit"
+                  disabled
+                  aria-label="Send demo message"
+                >
+                  ↑</button
+                ><button id="stop" class="stop" type="button" hidden>Stop</button>
+              </div>
+            </form>
+            <p id="status" class="status" role="status"></p>
+            <p class="privacy-note">Prewritten sample responses · Messages disappear on refresh</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

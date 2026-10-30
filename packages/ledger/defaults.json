@@ -1,0 +1,12 @@
+{
+  "localOnly": true,
+  "reconciliationMs": 60000,
+  "taskWaitTimeoutMs": 300000,
+  "maxLedgerRows": 10000,
+  "maxOperations": 10000,
+  "maxEntitlements": 200,
+  "maxReservations": 2000,
+  "maxAlerts": 2000,
+  "historyLimit": 200,
+  "staffRoles": ["owner", "super_admin", "admin"]
+}

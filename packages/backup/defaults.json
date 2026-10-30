@@ -1,0 +1,14 @@
+{
+  "algorithm": "aes-256-gcm",
+  "keyDerivation": "scrypt",
+  "keyLength": 32,
+  "saltLength": 16,
+  "ivLength": 12,
+  "tagLength": 16,
+  "scryptN": 16384,
+  "scryptR": 8,
+  "scryptP": 1,
+  "defaultBackupDir": "./data/backups",
+  "backupRetentionDays": 14,
+  "supportedArchiveVersions": [1]
+}

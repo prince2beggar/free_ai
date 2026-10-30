@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "scope": "Offline planning fixtures; neither prices nor grants are approved pack offers.",
+  "examples": [
+    {
+      "schema_version": 1,
+      "mode": "hypothetical",
+      "price_minor": 5000,
+      "currency": "BDT",
+      "fee": {
+        "fixed_minor": 150,
+        "percentage_rate": "0",
+        "minimum_minor": 0,
+        "rounding": "ceil_minor"
+      },
+      "hosting_share_minor": 300,
+      "buffer_pct": "0.10",
+      "input_share": "0.85",
+      "output_share": "0.15",
+      "safety_factor": "0.8",
+      "minimum_useful_tokens": 150000,
+      "tool_budget_micro_cu": 0,
+      "evidence": {
+        "path": "srs/SRS_v2.1_AI_Workspace.md",
+        "section": "9.4",
+        "classification": "HYPOTHETICAL_SRS_EXAMPLE"
+      },
+      "name": "SRS Premium",
+      "rounding_quantum": 5000,
+      "model_rates": [
+        {
+          "id": "hypothetical-premium",
+          "input_bdt_per_1m": "300",
+          "output_bdt_per_1m": "1500"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "mode": "hypothetical",
+      "price_minor": 5000,
+      "currency": "BDT",
+      "fee": {
+        "fixed_minor": 150,
+        "percentage_rate": "0",
+        "minimum_minor": 0,
+        "rounding": "ceil_minor"
+      },
+      "hosting_share_minor": 300,
+      "buffer_pct": "0.10",
+      "input_share": "0.85",
+      "output_share": "0.15",
+      "safety_factor": "0.8",
+      "minimum_useful_tokens": 150000,
+      "tool_budget_micro_cu": 0,
+      "evidence": {
+        "path": "srs/SRS_v2.1_AI_Workspace.md",
+        "section": "9.4",
+        "classification": "HYPOTHETICAL_SRS_EXAMPLE"
+      },
+      "name": "SRS Everyday",
+      "rounding_quantum": 100000,
+      "model_rates": [
+        {
+          "id": "hypothetical-everyday",
+          "input_bdt_per_1m": "12",
+          "output_bdt_per_1m": "48"
+        }
+      ]
+    }
+  ],
+  "sourced_pending_example": {
+    "schema_version": 1,
+    "mode": "sourced",
+    "name": "Unverified research inputs",
+    "as_of": "2026-10-13",
+    "model_price_ids": [
+      "gemini-flash-paid-2026"
+    ],
+    "fx_rate_id": "project-provider-settlement-fx",
+    "payment_fee_schedule_id": "sslcommerz-basic",
+    "notes": "Audit existing research evidence; no token grant while costs and conditions remain unresolved."
+  }
+}

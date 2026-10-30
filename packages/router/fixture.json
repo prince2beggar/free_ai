@@ -1,0 +1,124 @@
+{
+  "syntheticOnly": true,
+  "description": "Offline Router fixture with configured toy rates, quality and quota assumptions. Canned replies and synthetic accounting never prove actual model quality, provider capacity, spending or eligibility.",
+  "provider": {
+    "id": "router-synthetic-provider",
+    "name": "Synthetic Router demonstrator provider",
+    "adapterKind": "synthetic_mock",
+    "baseUrl": null,
+    "secretRef": null,
+    "termsUrl": "https://example.invalid/router-synthetic-fixture",
+    "termsReviewedAt": "2026-01-01",
+    "dataPolicy": "synthetic_only",
+    "allowsMultiuser": true,
+    "ownerApproved": true,
+    "quotaConfirmed": true
+  },
+  "modelMetadata": {
+    "contextVerified": true,
+    "modelClass": "synthetic",
+    "ratesVerified": true,
+    "qualityKind": "synthetic_fixture",
+    "agentReady": false
+  },
+  "models": [
+    {
+      "id": "router-synthetic-model-a",
+      "externalName": "router-synthetic-model-a",
+      "displayName": "Synthetic free Router model A",
+      "capabilities": ["text", "code", "tools", "long_context", "bangla", "english"],
+      "contextLimit": 8192,
+      "cuInputRate": "0",
+      "cuOutputRate": "0",
+      "freeFlag": true,
+      "codingScore": 90,
+      "banglaScore": 90
+    },
+    {
+      "id": "router-synthetic-model-b",
+      "externalName": "router-synthetic-model-b",
+      "displayName": "Synthetic free Router model B",
+      "capabilities": ["text", "code", "bangla", "english"],
+      "contextLimit": 4096,
+      "cuInputRate": "0",
+      "cuOutputRate": "0",
+      "freeFlag": true,
+      "codingScore": 80,
+      "banglaScore": 85
+    },
+    {
+      "id": "router-synthetic-model-paid",
+      "externalName": "router-synthetic-model-paid",
+      "displayName": "Synthetic paid-flag accounting model",
+      "capabilities": ["text", "code", "tools", "long_context", "bangla", "english"],
+      "contextLimit": 8192,
+      "cuInputRate": "0.125",
+      "cuOutputRate": "0.25",
+      "freeFlag": false,
+      "codingScore": 95,
+      "banglaScore": 95
+    }
+  ],
+  "accountRef": "router-synthetic-shared-account",
+  "expectedActiveUsers": "1",
+  "tokensPerRequest": "1000",
+  "safetyFactor": "0.8",
+  "anchorAt": "2026-01-01T00:00:00.000Z",
+  "windows": [
+    { "id": "minute", "windowMs": 60000, "requests": "100", "tokens": "100000" },
+    { "id": "day", "windowMs": 86400000, "requests": "5000", "tokens": "5000000" }
+  ],
+  "pools": [
+    { "id": "router-synthetic-provider-pool", "scope": "provider" },
+    { "id": "router-synthetic-account-pool", "scope": "account" },
+    {
+      "id": "router-synthetic-model-a-pool",
+      "scope": "model",
+      "modelId": "router-synthetic-model-a"
+    },
+    {
+      "id": "router-synthetic-model-b-pool",
+      "scope": "model",
+      "modelId": "router-synthetic-model-b"
+    },
+    {
+      "id": "router-synthetic-model-paid-pool",
+      "scope": "model",
+      "modelId": "router-synthetic-model-paid"
+    }
+  ],
+  "grants": [
+    {
+      "user": "userA",
+      "entitlementId": "router-synthetic-user-a-free",
+      "kind": "free",
+      "costMicroCu": "0",
+      "inputTokens": "100000",
+      "outputTokens": "100000",
+      "startsAt": "2026-01-01T00:00:00.000Z",
+      "endsAt": "2028-01-01T00:00:00.000Z"
+    },
+    {
+      "user": "userA",
+      "entitlementId": "router-synthetic-user-a-pack",
+      "kind": "pack",
+      "costMicroCu": "1000000",
+      "inputTokens": "100000",
+      "outputTokens": "100000",
+      "startsAt": "2026-01-01T00:00:00.000Z",
+      "endsAt": "2028-01-01T00:00:00.000Z"
+    },
+    {
+      "user": "userB",
+      "entitlementId": "router-synthetic-user-b-free",
+      "kind": "free",
+      "costMicroCu": "0",
+      "inputTokens": "100000",
+      "outputTokens": "100000",
+      "startsAt": "2026-01-01T00:00:00.000Z",
+      "endsAt": "2028-01-01T00:00:00.000Z"
+    }
+  ],
+  "gateway": { "chunkChars": 24, "chunkDelayMs": 2 },
+  "preview": { "port": 4178, "maintenanceIntervalMs": 60000 }
+}

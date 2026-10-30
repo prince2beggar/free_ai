@@ -1,0 +1,13 @@
+title = "AI Workspace secret scanning"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Git internals and checksum-verified external tool distribution only"
+paths = [
+  '''(^|[\\/])\.git([\\/]|$)''',
+  '''(^|[\\/])\.tools([\\/]|$)''',
+]
+
+# Do not allowlist docs, source, .env, or environment templates.

@@ -1,0 +1,14 @@
+{
+  "localOnly": true,
+  "maxProviders": 100,
+  "maxModels": 500,
+  "maxVersions": 2000,
+  "maxAuditEvents": 5000,
+  "maxRecordBytes": 32768,
+  "staffRoles": ["owner", "super_admin", "admin"],
+  "reviewActor": {
+    "id": "registry-local-reviewer",
+    "subject": "registry-cli-fixture",
+    "displayName": "Synthetic registry CLI reviewer"
+  }
+}

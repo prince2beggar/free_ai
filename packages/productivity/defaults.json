@@ -1,0 +1,18 @@
+{
+  "maxInputChars": 16000,
+  "maxInputTokens": 4000,
+  "defaultChunkChars": 3000,
+  "defaultChunkOverlapChars": 200,
+  "minBanglaPassRatePercent": 85,
+  "systemPrompts": {
+    "writing": "You are a professional writing and editorial assistant. Provide high-quality drafting, rewriting, grammar correction, and tone adjustments according to user preferences.",
+    "translation": "You are an expert bilingual translator specialized in English and Bengali. Translate text accurately, naturally, and idiomatically while preserving the original meaning, tone, and formatting.",
+    "summary": "You are a concise analytical assistant specializing in summarization and simplified explanations. Distill complex information into clear executive summaries, key bullet points, or beginner-friendly explanations.",
+    "general": "Synthetic general assistant.",
+    "coding": "Synthetic coding assistant.",
+    "research": "Synthetic research assistant."
+  },
+  "tones": ["formal", "casual", "professional", "academic", "empathetic", "concise", "persuasive"],
+  "summaryStyles": ["executive", "bullets", "tldr", "simplified"],
+  "structuredFormats": ["text", "table", "outline", "json"]
+}

@@ -1,0 +1,53 @@
+{
+  "localOnly": true,
+  "maxRetries": 1,
+  "maxFallbacks": 1,
+  "allowManualFallback": true,
+  "breakerFailures": 3,
+  "breakerWindowMs": 60000,
+  "coolOffMs": 60000,
+  "requestTimeoutMs": 10000,
+  "reconciliationMs": 60000,
+  "reservationTtlMs": 30000,
+  "maxOutputTokens": 96,
+  "dayOffsetMinutes": 360,
+  "maxRequests": 2000,
+  "maxAttempts": 6000,
+  "maxEvents": 20000,
+  "maxPolicyVersions": 100,
+  "maxCandidates": 100,
+  "systemPrompts": {
+    "general": "Synthetic general assistant.",
+    "coding": "Synthetic coding assistant.",
+    "writing": "Synthetic writing assistant.",
+    "research": "Synthetic research assistant.",
+    "translation": "Synthetic translation assistant. Translate accurately and naturally between languages.",
+    "summary": "Synthetic summarization assistant. Summarize text clearly and concisely."
+  },
+  "policy": {
+    "id": "router-default",
+    "version": 1,
+    "mode": "auto",
+    "modelClasses": ["synthetic"],
+    "requiredCapabilities": ["text"],
+    "allowPaid": true,
+    "ranking": ["cost", "quality", "latency"],
+    "presets": {
+      "general": { "requiredCapabilities": ["text"] },
+      "coding": { "requiredCapabilities": ["text", "code"], "ranking": ["quality", "cost"] },
+      "writing": { "requiredCapabilities": ["text"], "ranking": ["quality", "cost"] },
+      "research": {
+        "requiredCapabilities": ["text", "long_context"],
+        "ranking": ["quality", "cost"]
+      },
+      "translation": {
+        "requiredCapabilities": ["text"],
+        "ranking": ["quality", "cost"]
+      },
+      "summary": {
+        "requiredCapabilities": ["text"],
+        "ranking": ["quality", "cost"]
+      }
+    }
+  }
+}

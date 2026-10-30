@@ -1,0 +1,13 @@
+DROP TABLE deletion_requests;
+DROP TABLE audit_events;
+DROP TABLE usage_events;
+DROP TABLE messages;
+DROP TABLE routing_records;
+DROP TABLE chat_requests;
+DROP TABLE conversations;
+DROP TABLE models;
+DROP TABLE providers;
+DROP TABLE oauth_states;
+DROP TABLE sessions;
+DROP TABLE users;
+DROP FUNCTION reject_append_only_change();
