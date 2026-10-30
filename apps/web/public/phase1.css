@@ -643,6 +643,7 @@ main {
   height: 100dvh;
   overflow-y: auto;
   position: relative;
+  scroll-padding-bottom: 220px;
 }
 
 .topbar,
@@ -1430,7 +1431,7 @@ html[data-theme='dark'] .tokens-chip {
   max-width: 820px;
   width: 100%;
   margin: 0 auto;
-  padding: 16px 20px 24px 20px;
+  padding: 16px 20px 220px 20px;
   position: relative;
   min-height: calc(100dvh - 56px);
 }
@@ -1788,9 +1789,14 @@ button[data-response-action]:hover {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  pointer-events: none;
   transition:
     left 0.25s ease,
     width 0.25s ease;
+}
+
+.composer-wrap > * {
+  pointer-events: auto;
 }
 
 .workspace.sidebar-collapsed .composer-wrap {
@@ -1986,6 +1992,7 @@ button[data-response-action]:hover {
   color: var(--text-subtle);
   text-align: center;
   margin: 0;
+  pointer-events: none;
 }
 
 /* ==========================================================================
@@ -2521,7 +2528,7 @@ dialog::backdrop {
   }
 
   .chat-shell {
-    padding-bottom: 140px;
+    padding-bottom: 220px;
   }
 
   .chatgpt-welcome {

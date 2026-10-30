@@ -445,6 +445,7 @@ h1 {
   text-align: center;
   color: #a0a797;
   margin: 5px 0 0;
+  pointer-events: none;
 }
 .visually-hidden {
   position: absolute;
