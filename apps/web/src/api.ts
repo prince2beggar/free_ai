@@ -691,10 +691,7 @@ export async function deleteApiKey(id: string): Promise<{ ok: boolean; id: strin
   return request<{ ok: boolean; id: string }>(`/api/keys/${encodeURIComponent(id)}`, 'DELETE');
 }
 
-export async function verifyApiKey(input: {
-  provider: string;
-  apiKey: string;
-}): Promise<{
+export async function verifyApiKey(input: { provider: string; apiKey: string }): Promise<{
   ok: boolean;
   connected: boolean;
   latencyMs?: number;

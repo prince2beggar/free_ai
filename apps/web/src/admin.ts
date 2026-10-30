@@ -200,7 +200,7 @@ async function loadKeys(): Promise<void> {
   const activeMetric = document.querySelector<HTMLElement>('#metric-keys-active');
 
   if (!tbody) return;
-  tbody.innerHTML = '';
+  tbody.replaceChildren();
 
   try {
     let res: { ok: boolean; keys: KeyItem[] };
@@ -218,7 +218,8 @@ async function loadKeys(): Promise<void> {
     if (keys.length === 0) {
       if (emptyNotice) {
         emptyNotice.hidden = false;
-        emptyNotice.textContent = 'No database keys found. Falling back to .env environment variables.';
+        emptyNotice.textContent =
+          'No database keys found. Falling back to .env environment variables.';
       }
       return;
     }
@@ -276,7 +277,14 @@ async function loadKeys(): Promise<void> {
       const tdExpiry = document.createElement('td');
       if (k.expiresAt) {
         const d = new Date(k.expiresAt).toLocaleDateString();
-        tdExpiry.innerHTML = k.isExpired ? `<span class="badge-expired">Expired</span>` : d;
+        if (k.isExpired) {
+          const expSpan = document.createElement('span');
+          expSpan.className = 'badge-expired';
+          expSpan.textContent = 'Expired';
+          tdExpiry.replaceChildren(expSpan);
+        } else {
+          tdExpiry.textContent = d;
+        }
       } else {
         tdExpiry.textContent = 'Never';
       }
@@ -408,7 +416,7 @@ async function loadKillSwitches(): Promise<void> {
   const historyTbody = document.querySelector<HTMLTableSectionElement>('#switch-history-tbody');
 
   if (!container) return;
-  container.innerHTML = '';
+  container.replaceChildren();
 
   try {
     const res = await adminRequest<{ killSwitches: KillSwitch[] | Record<string, KillSwitch> }>(
@@ -512,7 +520,7 @@ async function loadKillSwitches(): Promise<void> {
 
     // Load switch history
     if (historyTbody) {
-      historyTbody.innerHTML = '';
+      historyTbody.replaceChildren();
       const hist = await adminRequest<{
         history: Array<{
           entity_id: string;
@@ -529,14 +537,30 @@ async function loadKillSwitches(): Promise<void> {
 
       for (const h of hist.history ?? []) {
         const row = document.createElement('tr');
-        row.innerHTML = `
-          <td><code>${h.entity_id}</code></td>
-          <td>v${h.version}</td>
-          <td><span class="provider-tag">${h.action}</span></td>
-          <td>${h.actor_id}</td>
-          <td>${h.reason}</td>
-          <td>${new Date(h.created_at).toLocaleString()}</td>
-        `;
+        const tdId = document.createElement('td');
+        const codeId = document.createElement('code');
+        codeId.textContent = h.entity_id;
+        tdId.appendChild(codeId);
+
+        const tdVer = document.createElement('td');
+        tdVer.textContent = `v${h.version}`;
+
+        const tdAct = document.createElement('td');
+        const spAct = document.createElement('span');
+        spAct.className = 'provider-tag';
+        spAct.textContent = h.action;
+        tdAct.appendChild(spAct);
+
+        const tdActor = document.createElement('td');
+        tdActor.textContent = h.actor_id;
+
+        const tdReason = document.createElement('td');
+        tdReason.textContent = h.reason;
+
+        const tdDate = document.createElement('td');
+        tdDate.textContent = new Date(h.created_at).toLocaleString();
+
+        row.append(tdId, tdVer, tdAct, tdActor, tdReason, tdDate);
         historyTbody.appendChild(row);
       }
     }
@@ -552,7 +576,7 @@ async function loadUsers(): Promise<void> {
   const bannedMetric = document.querySelector<HTMLElement>('#metric-users-banned');
 
   if (!tbody) return;
-  tbody.innerHTML = '';
+  tbody.replaceChildren();
 
   try {
     const res = await adminRequest<{ ok: boolean; users: UserItem[] }>('/admin/api/users');
@@ -569,19 +593,27 @@ async function loadUsers(): Promise<void> {
       const tr = document.createElement('tr');
 
       const tdId = document.createElement('td');
-      tdId.innerHTML = `<code>${u.id}</code>`;
+      const codeId = document.createElement('code');
+      codeId.textContent = u.id;
+      tdId.appendChild(codeId);
 
       const tdName = document.createElement('td');
       tdName.textContent = u.displayName || (u as any).display_name || 'Anonymous';
 
       const tdTier = document.createElement('td');
-      tdTier.innerHTML = `<span class="staff-role-badge">${u.tier || 'free'}</span>`;
+      const spanTier = document.createElement('span');
+      spanTier.className = 'staff-role-badge';
+      spanTier.textContent = u.tier || 'free';
+      tdTier.appendChild(spanTier);
 
       const tdTrust = document.createElement('td');
       tdTrust.textContent = `Level ${u.trustLevel ?? (u as any).trust_level ?? 1}`;
 
       const tdStatus = document.createElement('td');
-      tdStatus.innerHTML = `<span class="switch-status-badge ${u.status === 'banned' ? 'switch-status-on' : 'switch-status-off'}">${u.status ?? 'active'}</span>`;
+      const spanStatus = document.createElement('span');
+      spanStatus.className = `switch-status-badge ${u.status === 'banned' ? 'switch-status-on' : 'switch-status-off'}`;
+      spanStatus.textContent = u.status ?? 'active';
+      tdStatus.appendChild(spanStatus);
 
       const tdActions = document.createElement('td');
       const row = document.createElement('div');
@@ -647,7 +679,7 @@ async function loadBackups(): Promise<void> {
   const metricCount = document.querySelector<HTMLElement>('#metric-backups-count');
 
   if (!tbody) return;
-  tbody.innerHTML = '';
+  tbody.replaceChildren();
 
   try {
     const res = await adminRequest<{ ok: boolean; backups: BackupItem[] }>('/admin/api/backups');
@@ -665,13 +697,19 @@ async function loadBackups(): Promise<void> {
       const tr = document.createElement('tr');
 
       const tdFile = document.createElement('td');
-      tdFile.innerHTML = `<code>${b.fileName}</code>`;
+      const codeFile = document.createElement('code');
+      codeFile.textContent = b.fileName;
+      tdFile.appendChild(codeFile);
 
       const tdSize = document.createElement('td');
       tdSize.textContent = `${(b.sizeBytes / 1024).toFixed(1)} KB`;
 
       const tdSha = document.createElement('td');
-      tdSha.innerHTML = `<code class="key-masked-code" title="${b.ciphertextSha256}">${b.ciphertextSha256.slice(0, 16)}...</code>`;
+      const codeSha = document.createElement('code');
+      codeSha.className = 'key-masked-code';
+      codeSha.title = b.ciphertextSha256;
+      codeSha.textContent = `${b.ciphertextSha256.slice(0, 16)}...`;
+      tdSha.appendChild(codeSha);
 
       const tdCreated = document.createElement('td');
       tdCreated.textContent = new Date(b.createdAt).toLocaleString();
@@ -723,7 +761,7 @@ async function loadAudit(): Promise<void> {
   const emptyNotice = document.querySelector<HTMLElement>('#admin-audit-empty');
 
   if (!tbody) return;
-  tbody.innerHTML = '';
+  tbody.replaceChildren();
 
   try {
     const res = await adminRequest<{ auditLogs: AuditItem[] }>('/admin/api/audit', 'POST', {});
@@ -742,14 +780,37 @@ async function loadAudit(): Promise<void> {
       const targetType = a.targetType || (a as any).target_type || 'n/a';
       const targetId = a.targetId || (a as any).target_id || 'n/a';
       const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${createdFormatted}</td>
-        <td><code>${actor}</code></td>
-        <td><span class="provider-tag">${a.action}</span></td>
-        <td>${targetType}</td>
-        <td><code>${targetId}</code></td>
-        <td><pre style="margin:0;font-size:11px;">${JSON.stringify(a.metadata || {})}</pre></td>
-      `;
+
+      const tdCreated = document.createElement('td');
+      tdCreated.textContent = createdFormatted;
+
+      const tdActor = document.createElement('td');
+      const codeActor = document.createElement('code');
+      codeActor.textContent = actor;
+      tdActor.appendChild(codeActor);
+
+      const tdAction = document.createElement('td');
+      const spanAction = document.createElement('span');
+      spanAction.className = 'provider-tag';
+      spanAction.textContent = a.action;
+      tdAction.appendChild(spanAction);
+
+      const tdTargetType = document.createElement('td');
+      tdTargetType.textContent = targetType;
+
+      const tdTargetId = document.createElement('td');
+      const codeTargetId = document.createElement('code');
+      codeTargetId.textContent = targetId;
+      tdTargetId.appendChild(codeTargetId);
+
+      const tdMeta = document.createElement('td');
+      const preMeta = document.createElement('pre');
+      preMeta.style.margin = '0';
+      preMeta.style.fontSize = '11px';
+      preMeta.textContent = JSON.stringify(a.metadata || {});
+      tdMeta.appendChild(preMeta);
+
+      tr.append(tdCreated, tdActor, tdAction, tdTargetType, tdTargetId, tdMeta);
       tbody.appendChild(tr);
     }
   } catch (err) {
@@ -774,7 +835,9 @@ async function loadTokens(): Promise<void> {
   const progressFill = document.querySelector<HTMLElement>('#stat-tokens-progress-fill');
   const provCountSub = document.querySelector<HTMLElement>('#stat-tokens-providers-count');
 
-  const providerTbody = document.querySelector<HTMLTableSectionElement>('#admin-provider-tokens-tbody');
+  const providerTbody = document.querySelector<HTMLTableSectionElement>(
+    '#admin-provider-tokens-tbody',
+  );
   const providerEmpty = document.querySelector<HTMLElement>('#admin-provider-tokens-empty');
   const userTbody = document.querySelector<HTMLTableSectionElement>('#admin-user-tokens-tbody');
   const userEmpty = document.querySelector<HTMLElement>('#admin-user-tokens-empty');
@@ -817,38 +880,65 @@ async function loadTokens(): Promise<void> {
 
     // 3. Provider table ("Which Have How Many")
     if (providerTbody) {
-      providerTbody.innerHTML = '';
+      providerTbody.replaceChildren();
       if (!byProvider || byProvider.length === 0) {
         if (providerEmpty) providerEmpty.hidden = false;
       } else {
         if (providerEmpty) providerEmpty.hidden = true;
         for (const p of byProvider) {
           const tr = document.createElement('tr');
-          const statusBadge =
-            p.status === 'active'
-              ? '<span class="status-pill status-pill-active">ACTIVE</span>'
-              : p.status === 'ready'
-                ? '<span class="status-pill status-pill-online">READY</span>'
-                : '<span class="status-pill status-pill-offline">OFFLINE</span>';
 
-          tr.innerHTML = `
-            <td>
-              <strong>${p.displayName}</strong>
-              <div class="muted small">${p.provider}</div>
-            </td>
-            <td>${statusBadge}</td>
-            <td><strong>${p.activeKeys}</strong> / ${p.keysCount}</td>
-            <td><strong>${fmt(p.requestsUsed)}</strong> reqs</td>
-            <td><strong>${fmt(p.totalTokens)}</strong> tokens</td>
-            <td><strong style="color: var(--admin-accent-green);">${fmt(p.availableTokens)}</strong></td>
-            <td>${fmt(p.dailyTokenCapacity)} / day</td>
-            <td>
-              <div class="token-bar-inline">
-                <div class="token-bar-inline-fill" style="width: ${Math.min(100, p.utilizationPercent)}%"></div>
-              </div>
-              <span class="small">${p.utilizationPercent}%</span>
-            </td>
-          `;
+          const tdName = document.createElement('td');
+          const strongName = document.createElement('strong');
+          strongName.textContent = p.displayName;
+          const mutedDiv = document.createElement('div');
+          mutedDiv.className = 'muted small';
+          mutedDiv.textContent = p.provider;
+          tdName.append(strongName, mutedDiv);
+
+          const tdStatus = document.createElement('td');
+          const statusPill = document.createElement('span');
+          statusPill.className = `status-pill status-pill-${p.status === 'active' ? 'active' : p.status === 'ready' ? 'online' : 'offline'}`;
+          statusPill.textContent = p.status.toUpperCase();
+          tdStatus.appendChild(statusPill);
+
+          const tdKeys = document.createElement('td');
+          const strongKeys = document.createElement('strong');
+          strongKeys.textContent = String(p.activeKeys);
+          tdKeys.append(strongKeys, document.createTextNode(` / ${p.keysCount}`));
+
+          const tdReqs = document.createElement('td');
+          const strongReqs = document.createElement('strong');
+          strongReqs.textContent = fmt(p.requestsUsed);
+          tdReqs.append(strongReqs, document.createTextNode(' reqs'));
+
+          const tdTokens = document.createElement('td');
+          const strongTokens = document.createElement('strong');
+          strongTokens.textContent = fmt(p.totalTokens);
+          tdTokens.append(strongTokens, document.createTextNode(' tokens'));
+
+          const tdAvail = document.createElement('td');
+          const strongAvail = document.createElement('strong');
+          strongAvail.style.color = 'var(--admin-accent-green)';
+          strongAvail.textContent = fmt(p.availableTokens);
+          tdAvail.appendChild(strongAvail);
+
+          const tdCap = document.createElement('td');
+          tdCap.textContent = `${fmt(p.dailyTokenCapacity)} / day`;
+
+          const tdUtil = document.createElement('td');
+          const barDiv = document.createElement('div');
+          barDiv.className = 'token-bar-inline';
+          const fillDiv = document.createElement('div');
+          fillDiv.className = 'token-bar-inline-fill';
+          fillDiv.style.width = `${Math.min(100, p.utilizationPercent)}%`;
+          barDiv.appendChild(fillDiv);
+          const utilSpan = document.createElement('span');
+          utilSpan.className = 'small';
+          utilSpan.textContent = ` ${p.utilizationPercent}%`;
+          tdUtil.append(barDiv, utilSpan);
+
+          tr.append(tdName, tdStatus, tdKeys, tdReqs, tdTokens, tdAvail, tdCap, tdUtil);
           providerTbody.appendChild(tr);
         }
       }
@@ -856,7 +946,7 @@ async function loadTokens(): Promise<void> {
 
     // 4. User table ("Which Have How Many")
     if (userTbody) {
-      userTbody.innerHTML = '';
+      userTbody.replaceChildren();
       if (!byUser || byUser.length === 0) {
         if (userEmpty) userEmpty.hidden = false;
       } else {
@@ -870,23 +960,51 @@ async function loadTokens(): Promise<void> {
                 ? 'token-badge-blue'
                 : 'token-badge-gold';
 
-          tr.innerHTML = `
-            <td>
-              <strong>${u.displayName}</strong>
-            </td>
-            <td><code>${u.userId}</code></td>
-            <td><span class="token-badge-pill token-badge-blue">${u.tier.toUpperCase()}</span></td>
-            <td><strong>${u.requests}</strong> / ${u.dailyRequestLimit}</td>
-            <td>${fmt(u.inputTokens)}</td>
-            <td>${fmt(u.outputTokens)}</td>
-            <td><strong>${fmt(u.consumedTokens)}</strong></td>
-            <td><strong style="color: var(--admin-accent-green);">${fmt(u.availableTokens)}</strong></td>
-            <td>
-              <span class="token-badge-pill ${remainingBadgeClass}">
-                ${u.quotaRemainingPercent}% Remaining
-              </span>
-            </td>
-          `;
+          const tdName = document.createElement('td');
+          const strongName = document.createElement('strong');
+          strongName.textContent = u.displayName;
+          tdName.appendChild(strongName);
+
+          const tdId = document.createElement('td');
+          const codeId = document.createElement('code');
+          codeId.textContent = u.userId;
+          tdId.appendChild(codeId);
+
+          const tdTier = document.createElement('td');
+          const tierPill = document.createElement('span');
+          tierPill.className = 'token-badge-pill token-badge-blue';
+          tierPill.textContent = u.tier.toUpperCase();
+          tdTier.appendChild(tierPill);
+
+          const tdReqs = document.createElement('td');
+          const strongReqs = document.createElement('strong');
+          strongReqs.textContent = String(u.requests);
+          tdReqs.append(strongReqs, document.createTextNode(` / ${u.dailyRequestLimit}`));
+
+          const tdIn = document.createElement('td');
+          tdIn.textContent = fmt(u.inputTokens);
+
+          const tdOut = document.createElement('td');
+          tdOut.textContent = fmt(u.outputTokens);
+
+          const tdConsumed = document.createElement('td');
+          const strongConsumed = document.createElement('strong');
+          strongConsumed.textContent = fmt(u.consumedTokens);
+          tdConsumed.appendChild(strongConsumed);
+
+          const tdAvail = document.createElement('td');
+          const strongAvail = document.createElement('strong');
+          strongAvail.style.color = 'var(--admin-accent-green)';
+          strongAvail.textContent = fmt(u.availableTokens);
+          tdAvail.appendChild(strongAvail);
+
+          const tdRem = document.createElement('td');
+          const remPill = document.createElement('span');
+          remPill.className = `token-badge-pill ${remainingBadgeClass}`;
+          remPill.textContent = `${u.quotaRemainingPercent}% Remaining`;
+          tdRem.appendChild(remPill);
+
+          tr.append(tdName, tdId, tdTier, tdReqs, tdIn, tdOut, tdConsumed, tdAvail, tdRem);
           userTbody.appendChild(tr);
         }
       }
@@ -1012,7 +1130,12 @@ function initEventHandlers(): void {
 
     connectStatus.removeAttribute('hidden');
     connectStatus.className = 'key-connect-status testing';
-    connectStatus.innerHTML = `<span class="spinner-small"></span> Testing live connection to ${prov}...`;
+    const sp = document.createElement('span');
+    sp.className = 'spinner-small';
+    connectStatus.replaceChildren(
+      sp,
+      document.createTextNode(` Testing live connection to ${prov}...`),
+    );
 
     try {
       let res: {
@@ -1042,14 +1165,32 @@ function initEventHandlers(): void {
 
       if (res.connected) {
         connectStatus.className = 'key-connect-status connected';
-        connectStatus.innerHTML = `🟢 <strong>Connected</strong>: ${res.message || 'Ready for instant AI chat'}`;
+        const str = document.createElement('strong');
+        str.textContent = 'Connected';
+        connectStatus.replaceChildren(
+          document.createTextNode('🟢 '),
+          str,
+          document.createTextNode(`: ${res.message || 'Ready for instant AI chat'}`),
+        );
       } else {
         connectStatus.className = 'key-connect-status failed';
-        connectStatus.innerHTML = `🔴 <strong>Connection error</strong>: ${res.error || 'Invalid key or unauthorized'}`;
+        const str = document.createElement('strong');
+        str.textContent = 'Connection error';
+        connectStatus.replaceChildren(
+          document.createTextNode('🔴 '),
+          str,
+          document.createTextNode(`: ${res.error || 'Invalid key or unauthorized'}`),
+        );
       }
     } catch (err) {
       connectStatus.className = 'key-connect-status failed';
-      connectStatus.innerHTML = `🔴 <strong>Connection error</strong>: ${err instanceof Error ? err.message : 'Network error'}`;
+      const str = document.createElement('strong');
+      str.textContent = 'Connection error';
+      connectStatus.replaceChildren(
+        document.createTextNode('🔴 '),
+        str,
+        document.createTextNode(`: ${err instanceof Error ? err.message : 'Network error'}`),
+      );
     }
   }
 

@@ -1377,14 +1377,23 @@ function initSearchPalette(): void {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = `search-result-row ${index === selectedIndex ? 'selected' : ''}`;
-      btn.innerHTML = `
-        <span class="search-result-icon">${item.icon}</span>
-        <div style="flex: 1;">
-          <span class="search-result-title">${item.title}</span>
-          <span class="search-result-sub">${item.sub}</span>
-        </div>
-        <span style="color: #64748b; font-size: 13px;">→</span>
-      `;
+      const iconSpan = document.createElement('span');
+      iconSpan.className = 'search-result-icon';
+      iconSpan.textContent = item.icon;
+      const textDiv = document.createElement('div');
+      textDiv.style.flex = '1';
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'search-result-title';
+      titleSpan.textContent = item.title;
+      const subSpan = document.createElement('span');
+      subSpan.className = 'search-result-sub';
+      subSpan.textContent = item.sub;
+      textDiv.append(titleSpan, subSpan);
+      const arrowSpan = document.createElement('span');
+      arrowSpan.style.color = '#64748b';
+      arrowSpan.style.fontSize = '13px';
+      arrowSpan.textContent = '→';
+      btn.append(iconSpan, textDiv, arrowSpan);
       btn.addEventListener('click', () => {
         executeItem(item);
       });
@@ -1514,13 +1523,20 @@ function openHistoryDialog(): void {
 
       const item = document.createElement('div');
       item.className = 'history-card-item';
-      item.innerHTML = `
-        <div style="flex: 1;">
-          <span class="history-card-title">${title}</span>
-          <span class="history-card-date">Active Conversation</span>
-        </div>
-        <span style="color: #00d2ff; font-weight: 600;">Open →</span>
-      `;
+      const textDiv = document.createElement('div');
+      textDiv.style.flex = '1';
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'history-card-title';
+      titleSpan.textContent = title;
+      const dateSpan = document.createElement('span');
+      dateSpan.className = 'history-card-date';
+      dateSpan.textContent = 'Active Conversation';
+      textDiv.append(titleSpan, dateSpan);
+      const openSpan = document.createElement('span');
+      openSpan.style.color = '#00d2ff';
+      openSpan.style.fontWeight = '600';
+      openSpan.textContent = 'Open →';
+      item.append(textDiv, openSpan);
       item.addEventListener('click', () => {
         dialog.close();
         link.click();
@@ -1951,7 +1967,7 @@ function initKeyPoolDialog(): void {
 
   async function renderTable(): Promise<void> {
     if (!tbody || !emptyHint) return;
-    tbody.innerHTML = '';
+    tbody.replaceChildren();
     try {
       const res = await fetchApiKeys();
       const keys: ApiKeyItem[] = res.keys ?? [];
@@ -2020,7 +2036,11 @@ function initKeyPoolDialog(): void {
         if (k.expiresAt) {
           const dateStr = new Date(k.expiresAt).toLocaleDateString();
           if (k.isExpired) {
-            tdExpiry.innerHTML = `<span class="badge-expired" title="Expired on ${dateStr}">Expired</span>`;
+            const expSpan = document.createElement('span');
+            expSpan.className = 'badge-expired';
+            expSpan.title = `Expired on ${dateStr}`;
+            expSpan.textContent = 'Expired';
+            tdExpiry.replaceChildren(expSpan);
           } else {
             tdExpiry.textContent = dateStr;
           }
@@ -2176,20 +2196,43 @@ function initKeyPoolDialog(): void {
 
     connectStatus.removeAttribute('hidden');
     connectStatus.className = 'key-connect-status testing';
-    connectStatus.innerHTML = `<span class="spinner-small"></span> Testing live connection to ${prov}...`;
+    const sp = document.createElement('span');
+    sp.className = 'spinner-small';
+    connectStatus.replaceChildren(
+      sp,
+      document.createTextNode(` Testing live connection to ${prov}...`),
+    );
 
     try {
       const res = await verifyApiKey({ provider: prov, apiKey: rawVal });
       if (res.connected) {
         connectStatus.className = 'key-connect-status connected';
-        connectStatus.innerHTML = `🟢 <strong>Connected</strong>: ${res.message || 'Ready for instant AI chat'}`;
+        const str = document.createElement('strong');
+        str.textContent = 'Connected';
+        connectStatus.replaceChildren(
+          document.createTextNode('🟢 '),
+          str,
+          document.createTextNode(`: ${res.message || 'Ready for instant AI chat'}`),
+        );
       } else {
         connectStatus.className = 'key-connect-status failed';
-        connectStatus.innerHTML = `🔴 <strong>Connection error</strong>: ${res.error || 'Invalid key or unauthorized'}`;
+        const str = document.createElement('strong');
+        str.textContent = 'Connection error';
+        connectStatus.replaceChildren(
+          document.createTextNode('🔴 '),
+          str,
+          document.createTextNode(`: ${res.error || 'Invalid key or unauthorized'}`),
+        );
       }
     } catch (err) {
       connectStatus.className = 'key-connect-status failed';
-      connectStatus.innerHTML = `🔴 <strong>Connection error</strong>: ${err instanceof Error ? err.message : 'Network error'}`;
+      const str = document.createElement('strong');
+      str.textContent = 'Connection error';
+      connectStatus.replaceChildren(
+        document.createTextNode('🔴 '),
+        str,
+        document.createTextNode(`: ${err instanceof Error ? err.message : 'Network error'}`),
+      );
     }
   }
 

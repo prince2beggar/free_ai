@@ -322,7 +322,10 @@ async function fetchTokenLedgerStats(db, keyPool) {
     entry.requestsUsed += Number(k.requestsUsed || 0);
   }
 
-  const totalProviderRequests = [...providerMap.values()].reduce((acc, p) => acc + p.requestsUsed, 0);
+  const totalProviderRequests = [...providerMap.values()].reduce(
+    (acc, p) => acc + p.requestsUsed,
+    0,
+  );
   const avgTokensPerReq = totalRequests > 0 ? consumedTokens / totalRequests : 350;
 
   const byProvider = [];
@@ -359,7 +362,9 @@ async function fetchTokenLedgerStats(db, keyPool) {
     });
   }
 
-  byProvider.sort((a, b) => b.requestsUsed - a.requestsUsed || a.provider.localeCompare(b.provider));
+  byProvider.sort(
+    (a, b) => b.requestsUsed - a.requestsUsed || a.provider.localeCompare(b.provider),
+  );
 
   let byUser = [];
   try {
@@ -391,9 +396,7 @@ async function fetchTokenLedgerStats(db, keyPool) {
       return {
         userId: u.id,
         displayName:
-          u.id === 'synthetic-user-a'
-            ? 'Md Asadujjaman Prince (Admin)'
-            : u.display_name || u.id,
+          u.id === 'synthetic-user-a' ? 'Md Asadujjaman Prince (Admin)' : u.display_name || u.id,
         tier: u.tier || 'free',
         status: u.status || 'active',
         requests: Number(u.requests_count),
@@ -2311,12 +2314,20 @@ export function createApp({
         json(response, 200, tokenStats);
         return;
       }
-      if (keyPool && (path === '/api/keys' || path === '/admin/api/keys') && request.method === 'GET') {
+      if (
+        keyPool &&
+        (path === '/api/keys' || path === '/admin/api/keys') &&
+        request.method === 'GET'
+      ) {
         const keys = await keyPool.listKeys();
         json(response, 200, { ok: true, keys });
         return;
       }
-      if (keyPool && (path === '/api/keys' || path === '/admin/api/keys') && request.method === 'POST') {
+      if (
+        keyPool &&
+        (path === '/api/keys' || path === '/admin/api/keys') &&
+        request.method === 'POST'
+      ) {
         const input = await body(request, limits);
         const result = await keyPool.addKey(input);
         let connection = null;

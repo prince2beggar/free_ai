@@ -154,19 +154,15 @@ async function* streamGitHubModels({
     }
   }
 
-  throw lastErr ?? new AppError(503, 'GITHUB_MODELS_OFFLINE', 'GitHub Models endpoints are offline.');
+  throw (
+    lastErr ?? new AppError(503, 'GITHUB_MODELS_OFFLINE', 'GitHub Models endpoints are offline.')
+  );
 }
 
 /**
  * Streams completion from OpenRouter API (Free tier models).
  */
-async function* streamOpenRouter({
-  apiKey,
-  model,
-  messages,
-  maxTokens = 2048,
-  signal,
-}) {
+async function* streamOpenRouter({ apiKey, model, messages, maxTokens = 2048, signal }) {
   const url = 'https://openrouter.ai/api/v1/chat/completions';
   const candidates = [
     model && !model.startsWith('synthetic') ? model : null,
@@ -252,13 +248,7 @@ async function* streamOpenRouter({
 /**
  * Streams completion from GroqCloud API (Free tier).
  */
-async function* streamGroq({
-  apiKey,
-  model,
-  messages,
-  maxTokens = 2048,
-  signal,
-}) {
+async function* streamGroq({ apiKey, model, messages, maxTokens = 2048, signal }) {
   const url = 'https://api.groq.com/openai/v1/chat/completions';
 
   // Active Groq models in prioritized order (tested and verified on Groq API)
@@ -342,13 +332,7 @@ async function* streamGroq({
 /**
  * Streams completion from Google Gemini API (Free tier).
  */
-async function* streamGemini({
-  apiKey,
-  model,
-  messages,
-  maxTokens = 2048,
-  signal,
-}) {
+async function* streamGemini({ apiKey, model, messages, maxTokens = 2048, signal }) {
   const candidates = [
     model && !model.startsWith('synthetic') ? model : null,
     'gemini-flash-lite-latest',
@@ -448,7 +432,6 @@ async function* streamGemini({
     new AppError(404, 'GEMINI_ERROR', 'No supported Gemini models available for this API key.')
   );
 }
-
 
 /**
  * Generic OpenAI-compatible stream handler for DeepSeek, Cerebras, Together, Mistral, SambaNova, Custom endpoints, etc.
@@ -593,7 +576,9 @@ function prepareEnrichedMessages(messages, { userName, language = 'en' } = {}) {
     'Follow these core behavioral guidelines:',
     '1. Direct & Ready-to-Use: Provide immediate, high-quality, practical answers. Never include unnecessary filler preambles (such as "Sure, here is...", "Here are some options..."), robotic disclaimers, or excessive conversational padding.',
     '2. Polished Outputs: When asked to write an email, letter, proposal, or document, write the complete, finalized text directly, ready to send immediately. Do not leave unfilled bracket placeholders like [Date], [Your Name], or [Boss\'s Name] — use natural phrasing like "today" or "Dear Sir/Manager".',
-    userName ? `3. User Identity: The user's name is ${userName}. When signing emails, letters, or messages on behalf of the user, sign with their name.` : '',
+    userName
+      ? `3. User Identity: The user's name is ${userName}. When signing emails, letters, or messages on behalf of the user, sign with their name.`
+      : '',
     language === 'bn'
       ? '4. Language: The user communicates in Bangla (বাংলা). Provide natural, fluent, elegant, and culturally appropriate phrasing.'
       : '4. Language: Use natural, articulate, modern professional English.',
@@ -647,8 +632,14 @@ export function createUniversalFreeGateway({
       const messages = prepareEnrichedMessages(rawMessages, { userName, language });
       const rawModel = typeof reqModel === 'string' ? reqModel.trim() : '';
       const isAuto = !rawModel || rawModel === 'auto' || rawModel.startsWith('synthetic');
-      const provPrefix = !isAuto && rawModel.includes(':') ? rawModel.split(':')[0].toLowerCase() : null;
-      const targetModel = !isAuto && rawModel.includes(':') ? rawModel.slice(rawModel.indexOf(':') + 1) : (!isAuto ? rawModel : null);
+      const provPrefix =
+        !isAuto && rawModel.includes(':') ? rawModel.split(':')[0].toLowerCase() : null;
+      const targetModel =
+        !isAuto && rawModel.includes(':')
+          ? rawModel.slice(rawModel.indexOf(':') + 1)
+          : !isAuto
+            ? rawModel
+            : null;
 
       // 1. Collect candidates: check Key Pool DB first across all active keys
       const candidates = [];
@@ -665,7 +656,13 @@ export function createUniversalFreeGateway({
             if (provB === provPrefix && provA !== provPrefix) return 1;
           }
           const score = (p) =>
-            p.startsWith('groq') ? 4 : p.startsWith('gemini') ? 3 : p.startsWith('openrouter') ? 2 : 1;
+            p.startsWith('groq')
+              ? 4
+              : p.startsWith('gemini')
+                ? 3
+                : p.startsWith('openrouter')
+                  ? 2
+                  : 1;
           return score(provB) - score(provA);
         });
 
@@ -802,7 +799,9 @@ export function createUniversalFreeGateway({
             runner = () =>
               streamGitHubModels({
                 token: k.api_key,
-                model: targetModel || (reqModel?.includes('llama') ? 'meta-llama-3.3-70b-instruct' : 'gpt-4o-mini'),
+                model:
+                  targetModel ||
+                  (reqModel?.includes('llama') ? 'meta-llama-3.3-70b-instruct' : 'gpt-4o-mini'),
                 messages,
                 maxTokens: maxOutputTokens,
                 signal,
@@ -828,7 +827,10 @@ export function createUniversalFreeGateway({
       }
 
       // If user specifically requested anthropic or openai, and we have an OpenRouter key in candidates, ensure it is ranked first
-      if ((provPrefix === 'anthropic' || provPrefix === 'openai') && !candidates.some((c) => c.provider === provPrefix)) {
+      if (
+        (provPrefix === 'anthropic' || provPrefix === 'openai') &&
+        !candidates.some((c) => c.provider === provPrefix)
+      ) {
         const orCandidate = candidates.find((c) => c.provider === 'openrouter');
         if (orCandidate) {
           const m = provPrefix === 'anthropic' ? 'anthropic/claude-3.5-sonnet' : 'openai/gpt-4o';
@@ -890,7 +892,12 @@ export function createUniversalFreeGateway({
       // 2. If at least one free provider key is available, execute with auto-fallback
       if (candidates.length > 0) {
         let lastError = null;
-        console.log('[Universal Gateway stream]', { reqModel, provPrefix, targetModel, candidates: candidates.map(c => c.name) });
+        console.log('[Universal Gateway stream]', {
+          reqModel,
+          provPrefix,
+          targetModel,
+          candidates: candidates.map((c) => c.name),
+        });
 
         for (const candidate of candidates) {
           try {
@@ -947,7 +954,7 @@ export function createUniversalFreeGateway({
             language === 'bn'
               ? `⚠️ **লাইভ এআই কল ব্যর্থ হয়েছে:** আপনার কনফিগার করা কী দিয়ে কল সম্পন্ন করা যায়নি (${lastError.message || lastError.code || 'Endpoint Offline'})।\n\n💡 **সমাধান:** [GroqCloud Console](https://console.groq.com/keys) অথবা [Google AI Studio](https://aistudio.google.com/app/apikey) থেকে ১ মিনিটে ফ্রি কী তৈরি করে সুপার অ্যাডমিন প্যানেলে (/admin) যুক্ত করুন।`
               : `⚠️ **Live AI Generation Notice:** The configured key failed to stream (${lastError.message || lastError.code || 'Endpoint Offline'}).\n\n💡 **Solution:** Create a free API key at [GroqCloud](https://console.groq.com/keys) or [Google AI Studio](https://aistudio.google.com/app/apikey) (Gemini Flash) and add it to the Super Admin Panel (/admin).`;
-          
+
           // Stream failover notice safely in bounded chunks
           const chars = Array.from(failMsg).slice(0, maxOutputTokens);
           for (let i = 0; i < chars.length; i += 14) {
