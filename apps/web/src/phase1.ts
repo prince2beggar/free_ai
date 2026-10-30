@@ -2839,10 +2839,6 @@ async function submitMessage(content: string, routing = routingOptions()): Promi
       }
       messageToSend += attachmentText;
     }
-    const modelSelector = document.querySelector<HTMLSelectElement>('#chat-model-selector');
-    const selectedModel =
-      modelSelector?.value && modelSelector.value !== 'auto' ? modelSelector.value : null;
-
     await sendMessage(
       selected.id,
       messageToSend,
@@ -2949,8 +2945,6 @@ async function submitMessage(content: string, routing = routingOptions()): Promi
       },
       routing,
       challenge,
-      selectedModel,
-      inMemoryUserName || 'Md Asadujjaman Prince',
     );
     if (!failed && verificationPurpose === 'burst') {
       verificationPurpose = undefined;

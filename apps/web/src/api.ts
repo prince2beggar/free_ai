@@ -241,8 +241,6 @@ export async function sendMessage(
   onEvent: (event: StreamEvent) => void,
   routing?: RoutingOptions,
   challenge?: ChallengeProof,
-  modelId?: string | null,
-  userName?: string,
 ): Promise<void> {
   const response = await fetch(
     '/api/conversations/' + encodeURIComponent(conversationId) + '/messages',
@@ -260,10 +258,8 @@ export async function sendMessage(
       body: JSON.stringify({
         content,
         language,
-        ...(modelId ? { modelId } : {}),
         ...(routing ? { routing } : {}),
         ...(challenge ? { challenge } : {}),
-        ...(userName ? { userName } : {}),
       }),
     },
   );
